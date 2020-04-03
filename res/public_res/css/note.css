@@ -1,0 +1,290 @@
+#noteTitle {
+    margin-top: 10px;
+    margin-bottom: 35px;
+    font-size: 2em;
+    color: var(--white);
+}
+
+#modalShare {
+    display: none;
+    text-align: end;
+    position: absolute;
+    right: 50px;
+    background: #00b4c4;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px
+}
+
+#addShare {
+    padding-top: 10px;
+    display: flex;
+}
+
+#addShareInput {
+    background: #0d0d0d;
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.2em;
+    vertical-align: middle;
+    flex: 1;
+}
+
+#addShareSubmit {
+    background: none;
+    padding: 0;
+    border: none;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+#addShareSubmit svg {
+    width: 2em;
+    height: 2em;
+    fill: #0d0d0d;
+    transition: fill .3s;
+}
+
+#addShareSubmit:hover svg {
+    fill: #fff;
+}
+
+.shareListElement {
+    display: flex;
+    align-items: center;
+}
+
+.shareListName {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.shareListRemove {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #0d0d0d;
+}
+
+.shareListRemove svg {
+    width: 2.2em;
+    height: 2.2em;
+}
+
+.shareListCanEdit {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #0d0d0d;
+    margin-left: 10px;
+    height: 2em;
+}
+
+.shareListCanEdit svg {
+    width: 2em;
+    height: 2em;
+}
+
+.separator {
+    flex: 1;
+}
+
+.shareListSeparator {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: none;
+    width: 70%;
+    border-top: 2px solid #0d0d0d;
+}
+
+#noShare {
+    text-align: start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #0d0d0d;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#modalDelete {
+    display: none;
+    position: absolute;
+    right: 50px;
+    background: #00b4c4;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+}
+
+#modalDelete p {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+#modalDelete div {
+    margin-top: 15px;
+}
+
+#modalDelete div button {
+    background: #0d0d0d;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 9px;
+    padding-left: 9px;
+    font-size: 1.2em;
+    height: auto;
+}
+
+#modalDelete div button:hover {
+    background: var(--dark-grey);
+}
+/*END DELETE*/
+
+/*******************************************TOOLS BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#separator {
+    flex: 1;
+}
+
+svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+svg:hover {
+    fill: #003f45;
+}
+
+button {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#edit, #shareButton, #deleteButton, #normalMode, #diapoMode, #newsMode {
+    margin-right: 10px;
+}
+
+#edit {
+    height: 3em;
+}
+
+#normalMode, #shareButton {
+    margin-left: 10px;
+}
+
+#normalMode svg {
+    fill: #5ff2ff;
+}
+
+#returnButton {
+    padding-right: 10px;
+    padding-left: 3px;
+    height: 2em;
+}
+
+#fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#fullscreen_exit {
+    display: none;
+}
+
+#fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+#switchMode {
+    background: #003f45;
+    height: 3em;
+    align-items: center;
+    display: flex;
+}
+
+#switchMode svg:hover {
+    fill: #00b4c4;
+}
+
+/*END TOOLS BAR*/
+
+#ownerString {
+    font-size: 1.2em;
+    color: #00b4c4;
+    margin-bottom: 35px;
+    margin-top: 0;
+}
+
+@media all and (max-width: 600px) {
+    #modalShare {
+        position: initial;
+    }
+}
+
+/***noteBook****/
+#little_separator {
+    width: 15em;
+    height: 2px;
+    background: var(--grey);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.noteBook {
+    color: var(--light-grey);
+    text-decoration: none;
+}
+
+.noteBook:hover .noteBookName {
+    color: #00b4c4;
+}
+
+.noteBook:hover svg {
+    fill: #00b4c4;
+}
+
+.noteBook svg {
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: text-bottom;
+    fill: #fff;
+    transition: fill .3s;
+    margin-right: 5px;
+}
+
+.noteBookName {
+    display: inline;
+    vertical-align: middle;
+    margin-left: 5px;
+    transition: color .3s;
+}
+
+@media all and (max-width: 620px) {
+    #little_separator {
+        width: 10em;
+    }
+}

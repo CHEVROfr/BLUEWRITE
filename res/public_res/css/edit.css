@@ -1,0 +1,339 @@
+[contentEditable=true]:empty:not(:focus)::before {
+    content:attr(placeholder);
+    color: #808080;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*TOOL BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#rator {
+    flex: 1;
+}
+
+svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+svg:hover {
+    fill: #003f45;
+}
+
+button {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#fullscreen_exit {
+    display: none;
+}
+
+#fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+.buttonInput {
+    position: fixed;
+    border: none;
+    background: none;
+    top: 0px;
+    left: 0px;
+    padding: 0;
+    height: 2em;
+    z-index: 101;
+}
+
+.buttonInput svg {
+    width: 2em;
+    height: 2em;
+    display: block;
+    margin-top: 9px;
+    margin-left: 5px;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+.buttonInput:hover svg {
+    fill: #003f45;
+}
+
+#toMarkdown {
+    height: 3em;
+    margin-right: 10px;
+}
+
+#toMarkdown svg {
+    width: 2.5em;
+    height: 100%;
+}
+
+/*END TOOL BAR*/
+
+#noteTitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 1.7em;
+    margin-left: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#titleText {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 2em;
+    font-family: "Bitstream", "OpenSans", sans-serif;
+    color: var(--white);
+    min-height: 1em;
+    margin-bottom: .4em;
+}
+
+#titleInput {
+    display: none;
+}
+
+#title_rator {
+    width: 100%;
+    height: 2px;
+    background: var(--grey);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#little_rator {
+    width: 15em;
+    height: 2px;
+    background: var(--grey);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.textInput {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1.1em;
+    font-family: "Bitstream", "OpenSans", sans-serif;
+    color: var(--white);
+}
+
+.editor-toolbar {
+    margin-top: 1.5em;
+}
+
+/* #noteInput {
+    display: none;
+}
+
+#noteText {
+    display: block;
+} */
+
+.noteText {
+    font-size: 1.15rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.blank {
+    display: none;
+}
+
+#underBox {
+    flex: 2;
+}
+/*///////////////BOOKS///////////////////////*/
+
+#booksSelector {
+    background: #0d0d0d;
+    border-color: var(--white);
+    border-style: solid;
+    border-radius: 5px;
+    padding: 3px;
+    color: var(--white);
+    font-size: 1.2em;
+}
+
+#booksInputLabel-top {
+    display: none;
+    color: var(--grey);
+    font-size: 1em;
+}
+
+#booksInputLabel-right {
+    display: inline;
+    color: var(--grey);
+    font-size: 1em;
+}
+
+#newBookInput {
+    display: none;
+    margin-top: 10px;
+    background: #0d0d0d;
+    border-color: var(--light-grey);
+    border-style: solid;
+    padding: 3px;
+    border-radius: 5px;
+    color: var(--white);
+    width: 15em;
+    font-size: 1.2em;
+}
+
+#newBookSubmit {
+    display: none;
+    text-decoration: none;
+    color: #00b4c4;
+    font-size: 1.5em;
+    vertical-align: middle;
+    transition: fill .3s;
+}
+
+#newBookSubmit:hover svg {
+    fill: #fff;
+}
+
+#newBookSubmit svg {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: sub;
+    fill: #00b4c4;
+}
+
+#buttonHideNewBook {
+    display: none;
+    background: var(--red);
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1em;
+    border-radius: 50%;
+    padding: 6px 6px 1px 5px;
+}
+
+#buttonHideNewBook svg {
+    width: 1em;
+    height: 1em;
+    transition: rotate .3s;
+    fill: #fff;
+}
+
+#buttonHideNewBook:hover svg {
+    rotate: 360deg;
+}
+
+#buttonShowNewBook {
+    display: inline;
+    background: #00b4c4;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1em;
+    border-radius: 50%;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#buttonShowNewBook svg {
+    width: 1em;
+    height: 1em;
+    transition: rotate .3s;
+    fill: #fff;
+}
+
+#buttonShowNewBook:hover svg {
+    rotate: 360deg;
+}
+
+/*/////////////////////////////////////END BOOKS///////////////////////////////////*/
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--grey);
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--grey);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--grey);
+}
+
+/*///////////////////COUNT CARACTERE*/
+#count {
+    text-align: right;
+}
+
+.caractNumText {
+    display: inline;
+    color: var(--white);
+    font-size: 0.8em;
+}
+
+@media all and (max-width: 620px) {
+    #little_rator {
+        width: 10em;
+    }
+
+    #booksInputLabel-top {
+        display: block;
+    }
+
+    #booksInputLabel-right {
+        display: none;
+    }
+}
+
+@media all and (max-width: 400px) {
+    #little_rator {
+        width: 5em;
+    }
+    #newBookInput {
+        width: 10em;
+    }
+}
+
+@media all and (max-width: 340px) {
+    #booksSelector {
+        width: 7em;
+    }
+}
+
+@media all and (max-width: 300px) {
+    #newBookInput {
+        width: 6em;
+    }
+}

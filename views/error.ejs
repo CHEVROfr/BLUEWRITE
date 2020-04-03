@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>bluewrite</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex">
+
+    <%- include head.ejs %>
+    
+    <link rel="stylesheet" href="/files/css/general.css?v=7" />
+    <link rel="stylesheet" href="/files/css/error.css?v=7" />
+  </head>
+  <body>
+    <div id="toolsBar">
+        <a href="<%- appTitleRedirect %>" id="appTitle"><h1>bluewrite</h1></a>
+        <p id="appTitleBy">, by</p>
+        <a href="https://chevro.fr" id="appTitleChevroLink"><h2 id="appTitleChevro">CHEVRO</h2></a>
+        <div id="separator"></div>
+        <a href="/settings" id="settings"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#settings"></use></svg></a>
+
+        <button id="fullscreen">
+            <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen"></use></svg>
+            <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen_exit"></use></svg>
+        </button>
+    </div>
+    
+    <div id="content">
+      <p id="errorCode"><%- errorCode %></p>
+      <p id="errorText"><%- errorText %></p>
+      <a href="<%- redirect %>" id="link"><%- redirectText %></a>
+    </div>
+    <script src="/files/js/fullscreen.js?v=7"></script>
+  </body>
+</html>

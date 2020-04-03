@@ -1,0 +1,227 @@
+/*///////////TOP*/
+#top {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    text-align: center;
+}
+
+#top span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#title {
+    color: var(--white);
+    font-size: 3.5em;
+    margin: 0;
+}
+
+#desc {
+    color: var(--white);
+    font-size: 1.7em;
+    margin: 0;
+}
+
+/*DOWN BAR*/
+#downBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5em;
+}
+
+.downIcon {
+    text-decoration: none;
+    color: var(--white);
+    display: inline-block;
+}
+
+.downIcon svg {
+    width: 6em;
+    height: 6em;
+    padding-right: 20px;
+    padding-left: 20px;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+.downIcon:hover svg {
+    fill: #00b4c4;
+}
+
+.downBar {
+    width: 100%;
+    background: var(--white);
+    height: 0.2em;
+}
+
+/*////////////PROS*/
+#pros {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pros-element {
+    width: 20%;
+    margin: auto;
+    margin-bottom: 3em;
+}
+
+.pros-element img {
+    width: 100%;
+}
+
+.pros-element p {
+    color: var(--white);
+    font-size: 1.5em;
+}
+
+@media all and (max-width: 1200px) {
+    .pros-element {
+        width: 25%;
+    }
+}
+
+@media all and (max-width: 900px) {
+    #pros {
+        display: block;
+    }
+
+    .pros-element {
+        width: 50%;
+    }
+
+    .downIcon svg {
+        width: 4em;
+        height: 4em;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .pros-element {
+        width: 75%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .pros-element {
+        width: 100%;
+    }
+}
+
+/**//**//**/
+@media all and (max-width: 600px) {
+    #top {
+        display: block;
+        margin-bottom: 2em;
+    }
+
+    #top svg {
+        margin-bottom: 3em;
+        width: 50%;
+        height: 50%;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #desc {
+        font-size: 1.2em;
+    }
+}
+
+@media all and (max-width: 400px) {
+    #appTitle h1 {
+        font-size: 1.8em;
+    }
+}
+
+/*******************************************TOOLS BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#separator {
+    flex: 1;
+}
+
+#toolsBar svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+#toolsBar svg:hover {
+    fill: #003f45;
+}
+
+#toolsBar button, #toolsBar a {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#toolsBar #settings {
+    margin-right: 10px;
+}
+
+#toolsBar #fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#toolsBar #fullscreen_exit {
+    display: none;
+}
+
+#toolsBar #fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+#toolsBar #connectOrSeeNotes {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0.5em;
+    transition: background .3s;
+}
+
+#toolsBar #connectOrSeeNotes:hover {
+    background: #003f45;
+}
+
+#toolsBar #connectOrSeeNotes a {
+    text-decoration: none;
+    color: #003f45;
+    transition: color .3s;
+}
+
+#toolsBar #connectOrSeeNotes a:hover {
+    color: #fff;
+}
+
+/*END TOOLS BAR*/

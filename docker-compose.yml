@@ -1,0 +1,32 @@
+version: '3'
+services:
+  bluewrite:
+    container_name: "bluewrite"
+    restart: always
+    build: .
+    ports:
+     - "8075:80"
+    volumes:
+      - './res:/app/res'
+      - './views:/app/views'
+    depends_on:
+      - bluewrite_db
+
+  bluewrite_db:
+    image: mongo:latest
+    restart: always
+    container_name: "bluewrite_db"
+    volumes:
+      - './db/data:/data/db'
+      - './db/backups:/backups'
+      - './db/scripts:/scripts'
+    environment:
+      MONGO_DATA_DIR: "/data/db"
+    ports:
+        - 27073:27017
+    command: mongod --auth
+
+networks:
+  default:
+    external:
+      name: BLWRT

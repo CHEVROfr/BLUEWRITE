@@ -1,0 +1,105 @@
+#topBar {
+    display: flex;
+}
+
+#returnButton {
+    text-decoration: none;
+    padding-top: 9px;
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-bottom: 7px;
+    fill: #00b4c4;
+}
+
+#returnButton svg {
+    transition: fill .3s;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+#returnButton:hover svg {
+    fill: #fff;
+}
+
+#pageName {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.7em;
+    color: var(--white);
+}
+
+#pseudo {
+    color: var(--white);
+    font-size: 1.3em;
+    margin-bottom: 2em;
+}
+
+#logout {
+    color: var(--white);
+    background: #00b4c4;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0.5em;
+    text-decoration: none;
+}
+
+/*******************************************TOOLS BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#separator {
+    flex: 1;
+}
+
+#toolsBar svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+#toolsBar svg:hover {
+    fill: #003f45;
+}
+
+#toolsBar button, #toolsBar a {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#toolsBar #settings {
+    margin-right: 10px;
+}
+
+#toolsBar #fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#toolsBar #fullscreen_exit {
+    display: none;
+}
+
+#toolsBar #fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+/*END TOOLS BAR*/

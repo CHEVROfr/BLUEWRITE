@@ -1,0 +1,38 @@
+#topBar {
+    display: flex;
+}
+
+#appTitle {
+    text-decoration: none;
+}
+
+#appTitle h1 {
+    font-size: 2em;
+    color: #00b4c4;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#bar {
+    width: 45%;
+    height: 2px;
+    background: #00b4c4;
+}
+
+#redirectMessage {
+    color: var(--white);
+    font-size: 1.2em;
+}
+
+#redirectLink {
+    text-decoration: none;
+    color: var(--white);
+    background: #00b4c4;
+    border-radius: 5px;
+    font-size: 1.7em;
+    padding-right: 6px;
+    padding-left: 6px;
+    padding-right: 3px;
+    padding-left: 3px;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>bluewrite</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+
+    <%- include head.ejs %>
+    
+    <link rel="stylesheet" href="/files/css/general.css?v=7" />
+    <link rel="stylesheet" href="/files/css/index.css?v=7" />
+  </head>
+  <body>
+    <div id="toolsBar">
+        <a href="/" id="appTitle"><h1>bluewrite</h1></a>
+        <p id="appTitleBy">, by</p>
+        <a href="https://chevro.fr" id="appTitleChevroLink"><h2 id="appTitleChevro">CHEVRO</h2></a>
+        <div id="separator"></div>
+        <%- connectOrSeeNotes %>
+    </div>
+    
+    <div id="content">
+      <%- content %>
+    </div>
+  </body>
+</html>

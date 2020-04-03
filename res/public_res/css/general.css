@@ -1,0 +1,163 @@
+/*BITSTREAM*/
+@font-face {
+    font-family: 'Bitstream';
+    font-weight: normal;
+    src: url(/files/font/BitstreamVeraSansMono.eot); /* Compatibilité IE9 */
+            /* Compatibilité IE6-IE8 */
+    src: url(/files/font/BitstreamVeraSansMono.eot) format('embedded-opentype'),
+            /* woff2 pour les navigateurs les plus récents */
+            /*url(/files/font/OpenSans.woff2) format('woff2'), */
+            /* woff pour les navigateurs récents */
+            url(/files/font/BitstreamVeraSansMono.woff) format('woff'),
+            /* Safari, Android, iOS */
+            url(/files/font/BitstreamVeraSansMono.ttf)  format('truetype'),
+            /* Legacy iOS */
+            url(/files/font/BitstreamVeraSansMono.svg) format('svg');
+    font-style: normal;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    --primary-blue: #00b4c4;
+
+    --primary-grey: #0d0d0d; 
+    
+    --white: #fff;
+    
+    --light-grey: #f1f1f1;
+
+    --grey: #aaaaaa;
+
+    --dark-grey: #2e2e2e;
+
+    --red: #FF8080;
+    
+    /*******SIZE*******/
+    --content-margin: 5%;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Bitstream", "Arial", "sans-serif";
+    background: #0d0d0d;
+    padding-top: 3em;
+}
+
+#content {
+    margin-top: 2em;
+    margin-bottom: 5em;
+    margin-left: var(--content-margin);
+    margin-right: var(--content-margin);
+    min-height: 100%;
+}
+
+.icon {
+    font-family: "Cicons";
+    font-style: normal;
+}
+
+.floatingButton {
+    color: var(--white);
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    text-decoration: none;
+    background: #00b4c4;
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+.floatingButton svg {
+    width: 3em;
+    padding: 15px;
+    height: 3em;
+    fill: #fff;
+    vertical-align: bottom;
+}
+
+.floatingButton:hover {
+    background: #fff;
+}
+
+.floatingButton:hover svg {
+    fill: #00b4c4;
+}
+
+@media all and (max-width: 600px) {
+    .floatingButton {
+        bottom: 35px;
+        right: 25px;
+    }
+
+    .floatingButton i {
+        padding: 17px;
+    }
+}
+
+@media all and (max-width: 1030px) {
+    body {
+        --content-margin: 2em;
+    }
+
+    #content {
+        margin-top: 2em;
+    }
+}
+
+/*TOP BAR*/
+#topBar {
+    display: flex;
+}
+
+#appTitle {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#appTitleBy {
+    color: #003f45;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#appTitleChevroLink {
+    text-decoration: none;
+    color: #003f45;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding: 0;
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+#appTitleChevro {
+    margin: 0;
+}
+
+#appTitle h1 {
+    color: #fff;
+    margin: 0;
+    margin-left: 10px;
+}
+
+@media all and (max-width: 500px) {
+    #appTitleChevroLink {
+        display: none;
+    }
+
+    #appTitleBy {
+        display: none;
+    }
+}
+
+/*SEARCH FORM*/
+#searchForm {
+    display: none;
+}

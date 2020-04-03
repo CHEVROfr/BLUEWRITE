@@ -1,0 +1,7 @@
+0000 : Unknown Error
+0001 : Invalid token
+0002 : The note does not exist or you do not have the right to read it
+0003 : can't share the note with the owner
+0004 : the user you want to share your note with does not exist
+0005 : a book with this name already exists
+0006 : the note was not added / edited because its title and text are empty

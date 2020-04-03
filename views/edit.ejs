@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title><%- pageTitle %> | bluewrite</title>
+    <meta name="description" content="<%- description %>" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex">
+
+    <%- include head.ejs %>
+
+    <link rel="stylesheet" href="/files/css/general.css?v=7" />
+    <link rel="stylesheet" href="/files/css/simplemde.custom.css?v=7" />
+    <link rel="stylesheet" href="/files/css/markdown.css?v=7" />
+    <link rel="stylesheet" href="/files/css/edit.css?v=7" />
+</head>
+
+<body>
+    <div id="toolsBar">
+        <div id="separator"></div>
+
+        <button id="fullscreen">
+            <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen"></use></svg>
+            <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen_exit"></use></svg>
+        </button>
+    </div>
+
+
+    <div id="content">
+        <form method="post" action="/<%- postForm %>/<%- noteId %>" id="editForm">
+
+            <input id="titleInput" type="text" name="title" placeholder="<%- titleHolder %>" value="<%- title %>" spellcheck="false" autocomplete="off">
+            <div id="titleText" class="noteText" contenteditable="true" placeholder="<%- titleHolder %>" spellcheck="false"></div>
+            <div id="title_separator"></div>
+
+            <%- error %>
+            <p id="booksInputLabel-top"><%- booksInputLabel %></p>
+            <%- books %>
+            <a href="#" id="buttonShowNewBook" class="buttonNewBook"><svg>
+                    <use xlink:href="/files/cicons/cicons.svg?v=7#add"></use>
+                </svg></a>
+            <p id="booksInputLabel-right"><%- booksInputLabel %></p>
+            <br />
+            <a href="#" id="buttonHideNewBook" class="buttonNewBook"><svg>
+                    <use xlink:href="/files/cicons/cicons.svg?v=7#cross"></use>
+                </svg></a>
+            <input id="newBookInput" type="text" name="newBookInput" spellcheck="false">
+            <a href="#" id="newBookSubmit"><svg>
+                    <use xlink:href="/files/cicons/cicons.svg?v=7#send"></use>
+                </svg></a>
+            <!-- <div id="little_separator"></div> -->
+
+            <textarea id="noteInput" class="textInput" name="text" placeholder="<%- textHolder %>" spellcheck="false"><%- text %></textarea>
+
+            <button class="buttonInput icon" id="noteInputSubmit" type="submit" title="Ctrl + S"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg></button>
+        </form>
+
+        <div id="underBox"></div>
+    </div>
+
+    <p id="token" style="display: none;"><%- token %></p>
+    <p id="apiHost" style="display: none;"><%- apiHost %></p>
+    <script src="/files/js/simplemde.min.js?v=7"></script>
+    <script src="/files/js/edit.js?v=7"></script>
+    <script src="/files/js/fullscreen.js?v=7"></script>
+</body>
+
+</html>

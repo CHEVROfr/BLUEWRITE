@@ -1,0 +1,91 @@
+#content {
+    margin: 0;
+    margin-top: 0px;
+    text-align: center;
+    margin-top: 5em;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+#errorCode {
+    color: #fff;
+    font-weight: bold;
+    font-size: 10em;
+    margin: 0;
+}
+
+#errorText {
+    color: #fff;
+    font-size: 2em;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+#link {
+    text-decoration: none;
+    color:#0d0d0d;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    padding-top: 5px;
+    padding-top: 7px;
+    font-size: 2em;
+}
+
+/*******************************************TOOLS BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#separator {
+    flex: 1;
+}
+
+#toolsBar svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+#toolsBar svg:hover {
+    fill: #003f45;
+}
+
+#toolsBar button, #toolsBar a {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#toolsBar #settings {
+    margin-right: 10px;
+}
+
+#toolsBar #fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#toolsBar #fullscreen_exit {
+    display: none;
+}
+
+#toolsBar #fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+/*END TOOLS BAR*/

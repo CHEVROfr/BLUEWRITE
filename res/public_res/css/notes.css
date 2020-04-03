@@ -1,0 +1,233 @@
+#noNotes {
+    font-size: 1.2em;
+    color: var(--white);
+}
+
+.noteBox {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--white);
+    border-bottom-style: solid;
+    transition: color .3s;
+}
+
+.noteBox:last-child {
+    border-style: none;
+}
+
+.noteBox:hover .noteTitle {
+    color: #00b4c4
+}
+.noteBox:hover .noteText {
+    color: #00b4c4
+}
+
+.noteInfos {
+    text-decoration: none;
+    display: block;
+}
+
+.noteText {
+    line-height: 1em;
+    max-height: 3em;
+    overflow: hidden;
+    margin-top: 0.3em;
+    font-size: 1em;
+    color: var(--grey);
+    display: block;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+.noteSeparator {
+    height: 1px;
+    width: 100%;
+    background: var(--light-grey);
+}
+
+.noteDate {
+    color: var(--grey);
+    margin-bottom: 0.3em;
+}
+
+.noteTitle {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.3em;
+    display: inline;
+}
+
+.ownerString {
+    color: #00b4c4;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+    margin-right: 5px;
+}
+
+/*///////////////////////NOTE BOOK////////////////////*/
+.noteBook {
+    color: var(--grey);
+    margin-top: 3px;
+    text-decoration: none;
+    display: inline-block;
+    transition: color .3s;
+}
+
+.noteBook:hover {
+    color: #00b4c4;
+}
+
+.noteBook:hover svg {
+    fill: #00b4c4;
+}
+
+.noteBook svg {
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: bottom;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+/*////////BOOKS///////////*/
+#books {
+    right: 150px;
+    margin-bottom: 7px;
+}
+
+#books svg {
+    width: 2em;
+    height: 2em;
+}
+
+@media all and (max-width: 600px) {
+    #books {
+        right: 120px;
+    }
+}
+
+/* SEARCH*/
+#searchForm {
+    text-align: center;
+    border-color: var(--white);
+    border-style: solid;
+    border-radius: 10px;
+    padding: 2px;
+    margin: auto;
+    width: 60%;
+    display: none;
+    margin-top: 2em;
+}
+
+#searchInput {
+    background: #0d0d0d;
+    color: var(--white);
+    padding: 7px;
+    font-size: 1.2em;
+    border: none;
+    flex: 2;
+    width: 100%;
+}
+
+#searchSubmit {
+    border: none;
+    background: #0d0d0d;
+    font-size: 1.7em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#searchSubmit svg {
+    width: 1.5em;
+    height: 1.5em;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+#searchSubmit:hover svg {
+    fill: #00b4c4;
+}
+
+#loading {
+    font-size: 5em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#loading svg {
+    animation: rotate 2s linear infinite;
+    fill: #fff;
+}
+
+@keyframes rotate{
+    to{ transform: rotate(360deg); }
+}
+
+#searchMessage {
+    color: var(--white);
+    font-size: 1.2em;
+    margin-top: 3em;
+}
+
+@media all and (max-width: 900px) {
+    #searchForm {
+        width: 90%;
+    }
+}
+
+/*******************************************TOOLS BAR*/
+#toolsBar {
+    display: flex;
+    justify-content: flex-end;
+    background: #00b4c4;
+    align-items: center;
+    height: 3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#separator {
+    flex: 1;
+}
+
+#toolsBar svg {
+    width: 2em;
+    height: 100%;
+    fill: #fff;
+    transition: fill .3s;
+}
+
+#toolsBar svg:hover {
+    fill: #003f45;
+}
+
+#toolsBar button, #toolsBar a {
+    height: 3em;
+    background: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#toolsBar #settings, #toolsBar #searchButton {
+    margin-right: 10px;
+}
+
+#toolsBar #fullscreen {
+    background: #003f45;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#toolsBar #fullscreen_exit {
+    display: none;
+}
+
+#toolsBar #fullscreen svg:hover {
+    fill: #00b4c4;
+}
+
+/*END TOOLS BAR*/
