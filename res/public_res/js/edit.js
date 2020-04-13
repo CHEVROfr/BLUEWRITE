@@ -2,7 +2,7 @@ var titleInput = document.getElementById('titleInput')
 var titleText = document.getElementById('titleText')
 var noteInput = document.getElementById('noteInput')
 var noteInputSubmit = document.getElementById('noteInputSubmit')
-var noteText = document.getElementById('noteText')
+var noteInputDiv = document.getElementById('noteInputDiv')
 var noteTitle = document.getElementById('noteTitle')
 var editForm = document.getElementById('editForm')
 var caractNum = document.getElementById('caractNum')
@@ -16,16 +16,6 @@ let apiHost = document.getElementById('apiHost').innerHTML
 let token = document.getElementById('token').innerHTML
 
 let isSave = false
-
-var simplemde = new SimpleMDE({ 
-    element: noteInput,
-    toolbarTips: false,
-    status: ["lines", "words"],
-    spellChecker: false,
-    showIcons: ["table", "code"],
-    hideIcons: ["fullscreen", "guide", "side-by-side"],
-    forceSync: true
-})
 
 /* ##################################################################
 #########################                ############################
@@ -88,9 +78,22 @@ titleText.onkeydown = (event) => {
 #####################################################################
 ###################################################################*/
 
-simplemde.codemirror.on("change", function(){
-	switchReturnSave()
-})
+noteInputDiv.oninput = () => {
+    switchReturnSave()
+    //noteInput.value = noteInputDiv.innerText
+    contentEditableToTextArea()
+}
+
+noteInputDiv.onpaste = () => {
+    console.log("hul")
+    
+    switchReturnSave()
+    setTimeout(() => {
+        console.log(noteInputDiv.innerText)
+        contentEditableToTextArea()
+    }, 200)
+}
+
 
 /* ##################################################################
 #########################                ############################
@@ -181,6 +184,54 @@ switchReturnSave = () => {
     noteInputSubmit.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=7#save"></use></svg>'
 }
 
+textareaToContentEditable = () => {
+    let text = noteInput.value
+    var lines = text.split(/\r\n|\r|\n/)
+    let html = ""
+    for(i = 0; i < lines.length; i++) {
+        if(lines[i] == "" || !lines[i]) {
+            html += "<br />"
+        }
+        else {
+            html += "<p>" + lines[i] + "</p>"
+        }
+    }
+    noteInputDiv.innerHTML = html
+}
+
+contentEditableToTextArea = () => {
+    let text = ""
+
+    if(noteInputDiv.childNodes.length == 0) {
+        text = noteInputDiv.innerText
+    }
+    else {
+        for(i = 0; i < noteInputDiv.childNodes.length; i++) {
+            if(text == "") {
+                text += noteInputDiv.childNodes[i].innerText + "   " // for markdown line break
+            }
+            else {
+                let innerText = noteInputDiv.childNodes[i].innerText
+                if(innerText == undefined) {
+                    innerText = ""
+                    if(typeof(noteInputDiv.childNodes[i]) == "object") {
+                        let line = noteInputDiv.childNodes[i].data.toString()
+                        text += "\n" + line.replace(/\n/g, "") + "   " // for markdown line break
+                    }
+                }
+                if(noteInputDiv.childNodes[i].tagName == "BR" || innerText == "\n" || innerText == "") {
+                    text += "\n"
+                }
+                else {
+                    text += "\n" + innerText.replace(/\n/g, "") + "   " // for markdown line break
+                }
+            }
+        }
+    }
+
+    noteInput.value = text
+}
+
 /* ##################################################################
 #########################                ############################
 #########################     START      ###########################
@@ -193,3 +244,6 @@ if(titleInput.value == "") {
     document.title = titleInput.placeholder + " | bluewrite"
 }
 titleText.innerText = titleInput.value
+
+//noteInputDiv.innerHTML = noteInput.value.replace(/\n/g, "<br />")
+textareaToContentEditable()

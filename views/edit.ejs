@@ -52,6 +52,7 @@
             <!-- <div id="little_separator"></div> -->
 
             <textarea id="noteInput" class="textInput" name="text" placeholder="<%- textHolder %>" spellcheck="false"><%- text %></textarea>
+            <div id="noteInputDiv" contenteditable="true"><%- text %></div>
 
             <button class="buttonInput icon" id="noteInputSubmit" type="submit" title="Ctrl + S"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg></button>
         </form>
@@ -61,7 +62,6 @@
 
     <p id="token" style="display: none;"><%- token %></p>
     <p id="apiHost" style="display: none;"><%- apiHost %></p>
-    <script src="/files/js/simplemde.min.js?v=7"></script>
     <script src="/files/js/edit.js?v=7"></script>
     <script src="/files/js/fullscreen.js?v=7"></script>
 </body>

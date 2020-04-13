@@ -103,6 +103,11 @@
     color: #fff;
     font-size: 1.15rem;
 }
+.noteText li>p,
+.editor-preview li>p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 .noteText table,
 .editor-preview table {
