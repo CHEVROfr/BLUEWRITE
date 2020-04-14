@@ -65,7 +65,14 @@ exports.getNotes = (uid) => {
                 })
             }
 
-            if(result.length == 0) { // if no notes, return empty string
+            if(!result) {
+                var responseP = new Array()
+                responseP["status"] = "sucess"
+                responseP["notes"] = ""
+                responseP["date"] = tools_universal.getFormatDate()
+                resolveP(responseP)
+            }
+            else if(result.length == 0) { // if no notes, return empty string
                 var responseP = new Array()
                 responseP["status"] = "sucess"
                 responseP["notes"] = ""

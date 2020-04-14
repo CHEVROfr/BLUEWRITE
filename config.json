@@ -1,7 +1,7 @@
 {
     "domain": "",
-    "dbRootPassword": "",
-    "dbUserPassword": "",
+    "port": "",
+    "mongodbString": "",
     "nameServerDomain": "",
     "nameServerApiHost": "",
     "nameServerApiKey": ""

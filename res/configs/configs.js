@@ -1,17 +1,19 @@
 const fs = require('fs')
 
 var domain = ""
-var dbUserPassword = ""
+var port = "" 
+var mongodbString = ""
 var nameServerDomain = ""
 var nameServerApiHost = ""
-var nameServerApiKey = ""
+var nameServerApiKey = "" 
 
 exports.load = () => {
-    let data = fs.readFileSync('/app/config.json')
+    let data = fs.readFileSync('config.json')
 
     let config = JSON.parse(data)
     domain = config["domain"]
-    dbUserPassword = config["dbUserPassword"]
+    port = config["port"]
+    mongodbString = config["mongodbString"]
     nameServerDomain = config["nameServerDomain"]
     nameServerApiHost = config["nameServerApiHost"]
     nameServerApiKey = config["nameServerApiKey"]
@@ -23,8 +25,10 @@ exports.get = (query) => {
     switch(query) {
         case "domain":
             return domain
-        case "dbUserPassword":
-            return dbUserPassword
+        case "port":
+            return port
+        case "mongodbString":
+            return mongodbString
         case "nameServerDomain":
             return nameServerDomain
         case "nameServerApiHost":

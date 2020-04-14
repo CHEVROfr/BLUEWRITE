@@ -5,47 +5,29 @@ Here is an instance available: blwrt.com
 
 # Getting Started
 
-BLWRT (BLUEWRITE) is a web application for taking notes created with Node.js and Docker
+BLWRT (BLUEWRITE) is a web application for taking notes created with Node.js and MongoDb
 
 # Prerequisites
 
-To launch BLWRT, you will need Docker and docker-compose installed on your machine. You will also need, optionally, a name server. You can use [chevro.fr](https://chevro.fr).
+To launch BLWRT, you will need nodejs, npm and mongodb. You will also need, optionally, a name server. You can use [chevro.fr](https://chevro.fr).
+You need a mongodb instance for store your notes. Put th connection string in config.json
 
 Edit the configuration file config.json. Here is the example for blwrt.com:
 
     {
         "domain": "https://blwrt.com",
-        "dbRootPassword": "xxx",
-        "dbUserPassword": "xxx",
+        "port": "80",
+        "mongodbString": "mongodb://blwrt:xxx@localhost:27017/BLWRT",
         "nameServerDomain": "https://chevro.fr",
         "nameServerApiHost": "https://api.chevro.fr",
         "nameServerApiKey": "xxx"
     }
 
+If you run with Docker, port have to be 80.
+
 # Deployment
-
-Create (or re-create) the database with:
-
-    bash install_bdd.sh
-
-If the command fail, you can try run it a second time.
-
-## BACKUPS
-
-### Import
-
-For import a backup, put the json files in `db/backups`
-
-### Export
-
-    docker exec bluewrite_db mongoexport --db BLWRT --collection notes --out /backups/notes.json --username username --password password
-    docker exec bluewrite_db mongoexport --db BLWRT --collection books --out /backups/books.json --username username --password password
-
-The files will be available INSIDE the *bluewrite_db* container, in /backups
-
-## Start server
-
-    docker-compose.yml up --build -d
+    npm instal
+    npm start
 
 # Authors
 

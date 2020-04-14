@@ -5,7 +5,7 @@ services:
     restart: always
     build: .
     ports:
-     - "8075:80"
+     - "80:80"
     volumes:
       - './res:/app/res'
       - './views:/app/views'
@@ -18,8 +18,6 @@ services:
     container_name: "bluewrite_db"
     volumes:
       - './db/data:/data/db'
-      - './db/backups:/backups'
-      - './db/scripts:/scripts'
     environment:
       MONGO_DATA_DIR: "/data/db"
     ports:

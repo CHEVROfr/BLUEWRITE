@@ -1,7 +1,10 @@
 var mongoose = require('mongoose')
 var configs = require("../configs/configs")
 
-bluewrite_db = mongoose.createConnection('mongodb://blwrt:' + configs.get("dbUserPassword") + '@bluewrite_db:27017/BLWRT?retryWrites=true', {useNewUrlParser: true, useUnifiedTopology: true})
+//bluewrite_db = mongoose.createConnection('mongodb://blwrt:' + configs.get("dbUserPassword") + '@bluewrite_db:27017/BLWRT?retryWrites=true', {useNewUrlParser: true, useUnifiedTopology: true})
+console.log(configs.get("mongodbString"))
+bluewrite_db = mongoose.createConnection(configs.get("mongodbString"), {useNewUrlParser: true, useUnifiedTopology: true})
+
 bluewrite_db.once('open', () => console.log('connected to the database'));
 var shareWithSchema = new mongoose.Schema({ 
     uid: String,
