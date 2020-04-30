@@ -4,7 +4,6 @@ var domain = ""
 var port = "" 
 var mongodbString = ""
 var nameServerDomain = ""
-var nameServerApiHost = ""
 var nameServerApiKey = "" 
 
 exports.load = () => {
@@ -15,7 +14,6 @@ exports.load = () => {
     port = config["port"]
     mongodbString = config["mongodbString"]
     nameServerDomain = config["nameServerDomain"]
-    nameServerApiHost = config["nameServerApiHost"]
     nameServerApiKey = config["nameServerApiKey"]
 
     console.log('CONFIGS LOADED')
@@ -31,8 +29,6 @@ exports.get = (query) => {
             return mongodbString
         case "nameServerDomain":
             return nameServerDomain
-        case "nameServerApiHost":
-            return nameServerApiHost
         case "nameServerApiKey":
             return nameServerApiKey
         default:

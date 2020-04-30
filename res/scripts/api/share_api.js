@@ -41,25 +41,20 @@ exports.postShare = (req, res) => {
             }
             else {
                 share_universal.shareNote(responseCheck["uid"], req.body.nid, req.body.shareWith, req.body.canEdit).then((responseShare) => {
-                    if(responseShare["status"] == "sucess") {
-                        // Sucess
-                        jsonRes = {
-                            status: "sucess",
-                            canEdit: responseShare["canEdit"],
-                            alreadyAdded: responseShare["alreadyAdded"],
-                            uid: responseShare["uid"]
-                        }
-                        res.send(jsonRes)
+                    jsonRes = {
+                        status: "sucess",
+                        canEdit: responseShare["canEdit"],
+                        alreadyAdded: responseShare["alreadyAdded"],
+                        uid: responseShare["uid"]
                     }
-                    else {
-                        // Unknown Error
-                        jsonRes = {
-                            status: "error",
-                            code: responseShare["code"],
-                            err: responseShare["err"]
-                        }
-                        res.send(jsonRes)
+                    res.send(jsonRes)
+                }).catch((err) => {
+                    jsonRes = {
+                        status: "error",
+                        code: err["code"],
+                        err: err["err"]
                     }
+                    res.send(jsonRes)
                 })
             }
         }).catch((err) => {
@@ -113,22 +108,17 @@ exports.postDeshare = (req, res) => {
             }
             else {
                 share_universal.deshareNote(responseCheck["uid"], req.body.nid, req.body.deshareWith).then((responseShare) => {
-                    if(responseShare["status"] == "sucess") {
-                        // Sucess
-                        jsonRes = {
-                            status: "sucess"
-                        }
-                        res.send(jsonRes)
+                    jsonRes = {
+                        status: "sucess"
                     }
-                    else {
-                        // Unknown Error
-                        jsonRes = {
-                            status: "error",
-                            code: responseShare["code"],
-                            err: responseShare["err"]
-                        }
-                        res.send(jsonRes)
+                    res.send(jsonRes)
+                }).catch((err) => {
+                    jsonRes = {
+                        status: "error",
+                        code: err["code"],
+                        err: err["err"]
                     }
+                    res.send(jsonRes)
                 })
             }
         }).catch((err) => {

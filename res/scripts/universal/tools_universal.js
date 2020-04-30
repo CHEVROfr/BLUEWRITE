@@ -123,10 +123,10 @@ exports.checkUserToken = (token) => {
         params.append('key', configs.get("nameServerApiKey"))
         params.append('token', token)
 
-        fetch(configs.get("nameServerApiHost") + "/check", {method: "post", body: params}).then((responseCheck) => { 
+        fetch(configs.get("nameServerDomain") + "/api/check", {method: "post", body: params}).then((responseCheck) => { 
             responseCheck.json().then((responseCheck) => {
                 if(responseCheck["status"] == "error") {
-                    if(responseCheck["error"] == "0000") {
+                    if(responseCheck["code"] == "0005") {
                         toResolve = {
                             status: "error",
                             code: "0001",
@@ -177,13 +177,13 @@ exports.getPseudoOfUid = (uid) => {
         params.append('key', configs.get("nameServerApiKey"))
         params.append('uid', uid)
 
-        fetch(configs.get("nameServerApiHost") + "/pseudoofuid", {method: "post", body: params}).then((response) => { 
+        fetch(configs.get("nameServerDomain") + "/api/pseudo/uid", {method: "post", body: params}).then((response) => { 
             response.json().then((response) => {
                 if(response["status"] == "sucess" ) {
                     resolve(response["pseudo"])
                 }
                 else {
-                    resolve()
+                    reject()
                 }
             }).catch((err) => {
                 reject(err)
@@ -200,7 +200,7 @@ exports.getPseudosOfUids = (uids) => {
         params.append('client', "bluewrite")
         params.append('key', configs.get("nameServerApiKey"))
         params.append('uids', uids)
-        fetch(configs.get("nameServerApiHost") + "/pseudosofuids", {method: "post", body: params}).then((response) => { 
+        fetch(configs.get("nameServerDomain") + "/api/pseudos/uids", {method: "post", body: params}).then((response) => { 
             response.json().then((response) => {
                 if(response["status"] == "sucess" ) {
                     resolve(response["pseudos"])
@@ -224,13 +224,13 @@ exports.getUidOfPseudo = (pseudo) => {
         params.append('key', configs.get("nameServerApiKey"))
         params.append('pseudo', pseudo)
 
-        fetch(configs.get("nameServerApiHost") + "/uidofpseudo", {method: "post", body: params}).then((response) => { 
+        fetch(configs.get("nameServerDomain") + "/api/uid/pseudo", {method: "post", body: params}).then((response) => { 
             response.json().then((response) => {
                 if(response["status"] == "sucess" ) {
                     resolve(response["uid"])
                 }
                 else {
-                    resolve()
+                    reject()
                 }
             }).catch((err) => {
                 reject(err)

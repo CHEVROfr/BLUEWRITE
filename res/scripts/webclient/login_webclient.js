@@ -30,6 +30,7 @@ exports.checkLogin = (req, res) => {
                     }
                 }
             }).catch((err) => {
+                console.log(err)
                 // Unknown Error
                 console.err(err)
                 this.sendErrors("0000", req, res)
@@ -38,7 +39,7 @@ exports.checkLogin = (req, res) => {
         else if(req.session.connected != "true") {
             //var fullUrl = configs.get("domain") + req.originalUrl
             var fullUrl = configs.get("domain") + "/login/check"
-            res.redirect(configs.get("nameServerDomain") + "/my_token?r=" + fullUrl)
+            res.redirect(configs.get("nameServerDomain") + "/profile/token?r=" + fullUrl)
         }
         else {
             res.redirect("/notes")

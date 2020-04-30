@@ -184,9 +184,9 @@ addShare = () => {
                         shareListElement.appendChild(shareListCanEdit)
                     }
 
-                    let rator = document.createElement("div")
-                    rator.className = "rator"
-                    shareListElement.appendChild(rator)
+                    let separator = document.createElement("div")
+                    separator.className = "separator"
+                    shareListElement.appendChild(separator)
 
                     if(isOwner == "true") {
                         let shareListRemove = document.createElement("button")

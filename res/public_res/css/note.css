@@ -8,8 +8,8 @@
 #modalShare {
     display: none;
     text-align: end;
-    position: absolute;
-    right: 50px;
+    position: fixed;
+    right: 0;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;
@@ -112,8 +112,8 @@
 
 #modalDelete {
     display: none;
-    position: absolute;
-    right: 50px;
+    position: fixed;
+    right: 0;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;

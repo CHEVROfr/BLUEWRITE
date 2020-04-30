@@ -38,7 +38,7 @@ exports.Note = function(nid, uid, bookId, title, text, creationDate, lastUpdateD
                 params.append('uid', this.uid)
                 params.append('client', "bluewrite")
                 params.append('key', configs.get("nameServerApiKey"))
-                fetch(configs.get("nameServerApiHost") + "/pseudoofuid", {method: "post", body: params}).then((response) => { 
+                fetch(configs.get("nameServerDomain") + "/api/pseudo/uid", {method: "post", body: params}).then((response) => { 
                     response.json().then((response) => {
                         if(response["status"] == "sucess") {
                             this.pseudo = response["pseudo"]

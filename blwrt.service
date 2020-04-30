@@ -1,0 +1,21 @@
+[Unit]
+Description=Bluewrite, a note taking app
+After=mongod.service 
+
+[Service]
+WorkingDirectory=/home/cestoliv/PROD/CHEVRO/BLUEWRITE
+ExecStart=/usr/bin/node server.js
+
+Restart=always
+
+RestartSec=10
+
+StandardOutput=syslog
+StandardError=syslog
+
+SyslogIdentifier=blwrt
+
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

@@ -3,6 +3,5 @@
     "port": "",
     "mongodbString": "",
     "nameServerDomain": "",
-    "nameServerApiHost": "",
     "nameServerApiKey": ""
 }

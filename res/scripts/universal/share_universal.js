@@ -32,39 +32,21 @@ exports.shareNote = (uid, nid, shareWith, canEdit) => {
 
                 new Promise((resolve, reject) => {
                     tools_universal.getUidOfPseudo(shareWith).then((responseUid) => {
-                        if(responseUid) {
-                            resolve(responseUid)
-                        }
-                        else {
-                            tools_universal.getPseudoOfUid(shareWith).then((responsePseudo) => {
-                                if(responsePseudo) {
-                                    resolve(shareWith)
-                                }
-                                else {
-                                    resolveP({
-                                        status: "error",
-                                        code: "0004",
-                                        err: "the user you want to share your note with does not exist"
-                                    })
-                                }
-                            }).catch((err) => {
-                                resolveP({
-                                    status: "error",
-                                    code: "0000",
-                                    err: "shareNote : " + err
-                                })
-                            })
-                        }
+                        resolve(responseUid)
                     }).catch((err) => {
-                        resolveP({
-                            status: "error",
-                            code: "0000",
-                            err: "shareNote : " + err
+                        tools_universal.getPseudoOfUid(shareWith).then((responsePseudo) => {
+                            resolve(shareWith)
+                        }).catch((err) => {
+                            rejectP({
+                                status: "error",
+                                code: "0004",
+                                err: "the user you want to share your note with does not exist"
+                            })
                         })
                     })
                 }).then((shareWithUid) =>{
                     if(shareWithUid == uid) {
-                        resolveP({
+                        rejectP({
                             status: "error",
                             code: "0003",
                             err: "can't share the note with the owner"
@@ -96,7 +78,7 @@ exports.shareNote = (uid, nid, shareWith, canEdit) => {
                         })
                     }
                 }).catch((err) => {
-                    resolveP({
+                    rejectP({
                         status: "error",
                         code: "0000",
                         err: "shareNote : " + err
@@ -129,34 +111,16 @@ exports.deshareNote = (uid, nid, deshareWith) => {
                 shareWith = resultNote.shareWith
                 new Promise((resolve, reject) => {
                     tools_universal.getUidOfPseudo(deshareWith).then((responseUid) => {
-                        if(responseUid) {
-                            resolve(responseUid)
-                        }
-                        else {
-                            tools_universal.getPseudoOfUid(deshareWith).then((responsePseudo) => {
-                                if(responsePseudo) {
-                                    resolve(deshareWith)
-                                }
-                                else {
-                                    resolveP({
-                                        status: "error",
-                                        code: "0004",
-                                        err: "the user you want to deshare your note with does not exist"
-                                    })
-                                }
-                            }).catch((err) => {
-                                resolveP({
-                                    status: "error",
-                                    code: "0000",
-                                    err: "deshareNote : " + err
-                                })
-                            })
-                        }
+                        resolve(responseUid)
                     }).catch((err) => {
-                        resolveP({
-                            status: "error",
-                            code: "0000",
-                            err: "deshareNote : " + err
+                        tools_universal.getPseudoOfUid(deshareWith).then((responsePseudo) => {
+                            resolve(deshareWith)
+                        }).catch((err) => {
+                            rejectP({
+                                status: "error",
+                                code: "0004",
+                                err: "the user you want to deshare your note with does not exist"
+                            })
                         })
                     })
                 }).then((deshareWithUid) =>{
@@ -171,7 +135,7 @@ exports.deshareNote = (uid, nid, deshareWith) => {
                         })
                     })
                 }).catch((err) => {
-                    resolveP({
+                    rejectP({
                         status: "error",
                         code: "0000",
                         err: "deshareNote : " + err
