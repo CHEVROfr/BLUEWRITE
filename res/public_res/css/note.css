@@ -1,19 +1,29 @@
-#noteTitle {
-    margin-top: 10px;
-    margin-bottom: 35px;
-    font-size: 2em;
-    color: var(--white);
+@keyframes rotate{
+    to{ transform: rotate(360deg); }
 }
 
+/* ##################################################################
+#########################                ############################
+#########################   TOOLS BAR    ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
 #modalShare {
     display: none;
     text-align: end;
     position: fixed;
     right: 0;
+    top: 50px;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;
     margin: 8px
+}
+
+@media all and (max-width: 600px) {
+    #modalShare {
+        position: initial;
+    }
 }
 
 #addShare {
@@ -30,6 +40,7 @@
     font-size: 1.2em;
     vertical-align: middle;
     flex: 1;
+    min-width: 0;
 }
 
 #addShareSubmit {
@@ -114,6 +125,7 @@
     display: none;
     position: fixed;
     right: 0;
+    top: 50px;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;
@@ -144,10 +156,8 @@
 #modalDelete div button:hover {
     background: var(--dark-grey);
 }
-/*END DELETE*/
 
-/*******************************************TOOLS BAR*/
-#toolsBar {
+#note-toolsBar {
     display: flex;
     justify-content: flex-end;
     background: #00b4c4;
@@ -157,6 +167,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 100;
 }
 
 #separator {
@@ -200,8 +211,12 @@ button {
 
 #returnButton {
     padding-right: 10px;
-    padding-left: 3px;
+    padding-left: 10px;
     height: 2em;
+}
+
+#returnButton .loading {
+    animation: rotate 1.5s linear infinite;
 }
 
 #fullscreen {
@@ -230,22 +245,20 @@ button {
     fill: #00b4c4;
 }
 
-/*END TOOLS BAR*/
+/* ##################################################################
+#########################                ############################
+#########################      NOTE      ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
 
-#ownerString {
-    font-size: 1.2em;
-    color: #00b4c4;
+#noteTitle {
+    margin-top: 10px;
     margin-bottom: 35px;
-    margin-top: 0;
+    font-size: 2em;
+    color: var(--white);
 }
 
-@media all and (max-width: 600px) {
-    #modalShare {
-        position: initial;
-    }
-}
-
-/***noteBook****/
 #little_separator {
     width: 15em;
     height: 2px;
@@ -283,8 +296,232 @@ button {
     transition: color .3s;
 }
 
+/* ##################################################################
+#########################                ############################
+#########################      EDIT      ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+
+#titleInput {
+    display: none;
+}
+
+#titleText {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 2em;
+    font-family: "Bitstream", "OpenSans", sans-serif;
+    color: var(--white);
+    min-height: 1em;
+    margin-bottom: .4em;
+}
+
+#booksInputLabel-top {
+    display: none;
+    color: var(--grey);
+    font-size: 1em;
+}
+
+#booksInputLabel-right {
+    display: inline;
+    color: var(--grey);
+    font-size: 1em;
+}
+
+#newBookInput {
+    display: none;
+    margin-top: 10px;
+    background: #0d0d0d;
+    border-color: var(--light-grey);
+    border-style: solid;
+    padding: 3px;
+    border-radius: 5px;
+    color: var(--white);
+    width: 15em;
+    font-size: 1.2em;
+}
+
+#newBookSubmit {
+    display: none;
+    text-decoration: none;
+    color: #00b4c4;
+    font-size: 1.5em;
+    vertical-align: middle;
+    transition: fill .3s;
+}
+
+#newBookSubmit:hover svg {
+    fill: #fff;
+}
+
+#newBookSubmit svg {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: sub;
+    fill: #00b4c4;
+}
+
+#buttonHideNewBook {
+    display: none;
+    background: var(--red);
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1em;
+    border-radius: 50%;
+    padding: 6px 6px 1px 5px;
+}
+
+#buttonHideNewBook svg {
+    width: 1em;
+    height: 1em;
+    transition: rotate .3s;
+    fill: #fff;
+}
+
+#buttonHideNewBook:hover svg {
+    rotate: 360deg;
+}
+
+#buttonShowNewBook {
+    display: inline;
+    background: #00b4c4;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1em;
+    border-radius: 50%;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#buttonShowNewBook svg {
+    width: 1em;
+    height: 1em;
+    transition: rotate .3s;
+    fill: #fff;
+}
+
+#buttonShowNewBook:hover svg {
+    rotate: 360deg;
+}
+
+#booksSelector {
+    background: #0d0d0d;
+    border-color: var(--white);
+    border-style: solid;
+    border-radius: 5px;
+    padding: 3px;
+    color: var(--white);
+    font-size: 1.2em;
+}
+
+#noteInput {
+    display: none;
+}
+
+#modalErrorWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#modalError {
+    display: block;
+    background: #00b4c4;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+    max-width: 15em;
+    padding: 15px;
+}
+
+#modalErrorText {
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+#modalErrorAnswerDiv {
+    text-align: end;
+    margin-top: 20px;
+}
+
+#modalErrorAnswer {
+    margin: 0;
+    height: 100%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 2px 10px 3px 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all .3s;
+    color: #003f45;
+}
+
+#modalErrorAnswer:hover {
+    background: #003f45;
+    color: #fff;
+}
+
+#editor-loading {
+    font-size: 5em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#editor-loading svg {
+    animation: rotate 2s linear infinite;
+    fill: #fff;
+}
+
 @media all and (max-width: 620px) {
     #little_separator {
         width: 10em;
     }
+
+    #booksInputLabel-top {
+        display: block;
+    }
+
+    #booksInputLabel-right {
+        display: none;
+    }
+}
+
+@media all and (max-width: 400px) {
+    #little_separator {
+        width: 5em;
+    }
+    #newBookInput {
+        width: 10em;
+    }
+}
+
+@media all and (max-width: 340px) {
+    #booksSelector {
+        width: 7em;
+    }
+}
+
+@media all and (max-width: 300px) {
+    #newBookInput {
+        width: 6em;
+    }
+}
+
+
+#edit-content {
+    display: none;
 }

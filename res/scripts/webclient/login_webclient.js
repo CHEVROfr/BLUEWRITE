@@ -12,6 +12,7 @@ exports.checkLogin = (req, res) => {
                     }
                     else {
                         // Unknown Error
+                        console.log("on e la")
                         this.sendErrors("0000", req, res)
                     }
                 }
@@ -30,9 +31,7 @@ exports.checkLogin = (req, res) => {
                     }
                 }
             }).catch((err) => {
-                console.log(err)
                 // Unknown Error
-                console.err(err)
                 this.sendErrors("0000", req, res)
             })
         }

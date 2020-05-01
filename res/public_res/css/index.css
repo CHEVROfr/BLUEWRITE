@@ -31,7 +31,6 @@
 #downBox {
     display: flex;
     align-items: center;
-    margin-bottom: 5em;
 }
 
 .downIcon {
@@ -65,6 +64,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-top: 5em;
 }
 
 .pros-element {

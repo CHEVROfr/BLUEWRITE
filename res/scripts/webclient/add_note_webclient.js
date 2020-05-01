@@ -21,25 +21,15 @@ exports.get = (req, res) => {
                 }
             }
             else {
-                tools_webclient.getBooksDatalist(null, req.session).then((htmlBooks) => {
-                    res.render("edit.ejs", {
-                        postForm: "add/note",
-                        pageTitle : lang.get("add_note", req.session.lang), 
-                        description: "",
-                        noteId: "", 
-                        title: "", 
-                        booksInputLabel: lang.get("choose_a_book", req.session.lang),
-                        books: htmlBooks, 
-                        text: "", 
-                        titleHolder: lang.get("nameless", req.session.lang), 
-                        textHolder: lang.get("start_writing_something_incredible", req.session.lang), 
-                        error: "",
-                        caractNum : lang.get("characters", req.session.lang),
-                        token: req.session.auth_token, 
-                        apiHost: configs.get("domain")
-                    })
+                add_note_universal.addNote(
+                    responseCheck["uid"], 
+                    lang.get("nameless", req.session.lang), 
+                    lang.get("start_writing_something_incredible", 
+                    req.session.lang), 
+                    0
+                ).then((responseAdd) => {
+                    res.redirect("/note/" + responseAdd["nid"] + "#edit")
                 }).catch((err) => {
-                    // Unknown Error
                     console.error(err)
                     tools_webclient.sendErrors("0000", req, res)
                 })

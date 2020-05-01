@@ -63,5 +63,9 @@ getFr = (id) => {
             return "Ce livre"
         case "delete_book_and_notes":
             return "Ce livre et ses notes"
+        case "please_wait_while_saving_your_note":
+            return "Veuillez patienter pendant la sauvegarde de votre note"
+        case "cant_autosave_note":
+            return "Impossible d'effectuer une sauvegarde de votre note. Vérifiez que vous êtes connecté à internet."
     }
 }

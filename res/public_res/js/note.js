@@ -4,6 +4,9 @@ let isOwner = document.getElementById('isOwner').innerHTML
 let canEdit = document.getElementById('canEdit').innerHTML
 let apiHost = document.getElementById('apiHost').innerHTML
 
+let errorTextWaitWhileSaving = document.getElementById('errorTextWaitWhileSaving').innerHTML
+let errorTextCantSave = document.getElementById('errorTextCantSave').innerHTML
+
 var htmlStyle = getComputedStyle(document.documentElement)
 let modalShare = document.getElementById("modalShare")
 let modalShow = false
@@ -15,11 +18,67 @@ let noShare = document.getElementById("noShare")
 let editButton = document.getElementById("edit")
 let addShare = document.getElementById("addShare")
 
+let returnButton = document.getElementById("returnButton")
+
 let deleteButton = document.getElementById("deleteButton")
 let deleteYes = document.getElementById("deleteYes")
 let deleteNo = document.getElementById("deleteNo")
 let modalDelete = document.getElementById("modalDelete")
 let modalDeleteShow = false
+
+/* ##################################################################
+#########################                ############################
+#########################   ERROR MODAL  ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+let modalErrorWrapper = document.getElementById("modalErrorWrapper")
+let modalError = document.getElementById("modalError")
+let modalErrorText = document.getElementById("modalErrorText")
+let modalErrorAnswer = document.getElementById("modalErrorAnswer")
+
+modalErrorWrapper.onclick = () => {
+    modalErrorWrapper.style.display = "none"
+}
+
+modalErrorAnswer.onclick = () => {
+    modalErrorWrapper.style.display = "none"
+}
+
+showErrorModal = (errorText) => {
+    modalErrorText.innerHTML = errorText
+    modalErrorWrapper.style.display = "flex"
+}
+
+/* ##################################################################
+#########################                ############################
+#########################   TOOLS BAR    ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+
+let editShowed = false
+switchEdit = () => {
+    if(editShowed) {
+        setNewMarkdown()
+        document.getElementById('edit-content').style.display = 'none'
+        document.getElementById('note-content').style.display = 'block'
+        editShowed = false
+    }
+    else {
+        document.getElementById('edit-content').style.display = 'block'
+        document.getElementById('note-content').style.display = 'none'
+        editShowed = true
+    }
+}
+
+if(window.location.hash == "#edit") {
+    switchEdit()
+}
+
+returnButton.onclick = () => {
+    window.location.href = "/notes"
+}
 
 if(canEdit != "true" && isOwner != "true") {
     editButton.style.display = "none"
@@ -28,42 +87,6 @@ if(canEdit != "true" && isOwner != "true") {
 if(isOwner != "true") {
     addShare.removeChild(addShareInput)
     addShare.removeChild(addShareSubmit)
-}
-
-
-/* Add class checked to every checkbox checked */
-addClassToCheckedInputs = () => {
-    let inputs = document.getElementsByTagName("input")
-
-    for(c = 0; c < inputs.length; c++) {
-        if(inputs[c].type == "checkbox") {
-            if(inputs[c].checked) {
-                inputs[c].parentElement.className += " checked"
-            }
-        }
-    }
-}
-addClassToCheckedInputs()
-/* END */
-
-document.onkeydown = (event) => {
-    if (event.ctrlKey || event.metaKey) {
-        switch (String.fromCharCode(event.which).toLowerCase()) {
-            case 'e':
-                if(event.preventDefault) {
-                    event.preventDefault()
-                }
-                else {
-                    event.returnValue = false
-                }
-                edit()
-                break;
-        }
-    }
-}
-
-edit = () => {
-    window.location.href = "/edit/note/" + nid
 }
 
 shareButton.onclick = (e) => {
@@ -274,4 +297,241 @@ removeShareWith = (obj, uid) => {
             }
         })
     })
+}
+
+/* ##################################################################
+#########################                ############################
+#########################   EDITOR       ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+var titleInput = document.getElementById('titleInput')
+var titleText = document.getElementById('titleText')
+var noteInput = document.getElementById('noteInput')
+var noteTitle = document.getElementById('noteTitle')
+var editForm = document.getElementById('editForm')
+var buttonShowNewBook = document.getElementById('buttonShowNewBook')
+var newBookInput = document.getElementById('newBookInput')
+var newBookSubmit = document.getElementById('newBookSubmit')
+var booksSelector = document.getElementById('booksSelector')
+
+let changeDetected = false
+let quitAfterSave = false
+var editor
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////INITIALIZE EDITOR */
+setNewMarkdown = () => {}
+
+window.onload = () => {
+    editor = new Editor({
+        toolbar: []
+    })
+    editor.render()
+    document.getElementById("editor-loading").style.display = "none"
+
+    let editorContent = document.getElementsByClassName("CodeMirror-code")
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver((mutationsList, observer) => {
+        for(let mutation of mutationsList) {
+            iconContentUnsaved()
+        }
+    })
+    for(i = 0; i < editorContent.length; i++) {
+        observer.observe(editorContent[i], { 
+            attributes: true, 
+            childList: true, 
+            subtree: true 
+        })
+    }
+
+    setNewMarkdown = () => {
+        var converter = new showdown.Converter({
+            tasklists: true,
+            tables: true
+        }),
+        text = editor.codemirror.getValue()
+        document.getElementById("noteText").innerHTML = converter.makeHtml(text)
+    }
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////SAVE */
+saveEdit = () => {
+    const data = new URLSearchParams()
+    data.append("token", token)
+    data.append("nid", nid)
+    data.append("title", titleInput.value)
+    data.append("text", editor.codemirror.getValue())
+    data.append("book", booksSelector.options[booksSelector.selectedIndex].value)
+
+    fetch(apiHost + '/api/edit', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    }).then((response) => {
+        response.json().then((json) => {
+            if(json["status"] == "sucess") {
+                if(quitAfterSave) {
+                    window.location.href = "/notes"
+                }
+                else {
+                    returnButton.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg>'
+                    returnButton.onclick = () => {
+                        window.location.href = "/notes"
+                    }
+                }
+            }
+            else {
+                showErrorModal(errorTextCantSave)
+                returnButton.onclick = () => {
+                    showErrorModal(errorTextCantSave)
+                }
+                returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=7#save"></use></svg>'
+            }
+        })
+    }).catch(() => {
+        showErrorModal(errorTextCantSave)
+        returnButton.onclick = () => {
+            showErrorModal(errorTextCantSave)
+        }
+        returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=7#save"></use></svg>'
+    })
+}
+
+iconContentUnsaved = () => {
+    returnButton.innerHTML = '<svg class="loading"><use xlink:href="/files/cicons/cicons.svg?v=7#loading"></use></svg>'
+    returnButton.onclick = () => {
+        showErrorModal(errorTextWaitWhileSaving)
+    }
+    changeDetected = true
+}
+
+setInterval(() => {
+    if(changeDetected) {
+        saveEdit()
+        changeDetected = false
+    }
+}, 3000)
+
+/* //////////////////////////////////////////////////////////////////TITLE*/
+titleText.oninput = (e) => {
+    titleInput.value = titleText.innerText
+    document.title = titleText.innerText + " | bluewrite"
+    if(titleInput.value == "") {
+        titleText.innerHTML = ""
+        document.title = titleInput.placeholder + " | bluewrite"
+    }
+    iconContentUnsaved()
+}
+
+titleText.onkeydown = (event) => {
+    if(event.keyCode == 13) {
+        return false
+    }
+}
+
+if(titleInput.value == "") {
+    titleText.innerHTML = ""
+    document.title = titleInput.placeholder + " | bluewrite"
+}
+titleText.innerText = titleInput.value
+
+/*/////////////////////////////////////////////////////////////////////BOOKS*/
+booksSelector.onchange = () => {
+    iconContentUnsaved()
+}
+
+newBookSubmit.onclick = (e) => {
+    addBook()
+    hideNewBook()
+}
+
+newBookInput.onkeydown = (event) => {
+    //on enter
+    if (event.keyCode == 13) {
+        event.preventDefault()
+        addBook()
+        hideNewBook()
+        return false
+    }
+}
+
+buttonShowNewBook.onclick = (e) => {
+    newBookInput.style.display = "inline"
+    newBookInput.focus()
+    newBookSubmit.style.display = "inline"
+    buttonHideNewBook.style.display = "inline"
+    buttonShowNewBook.style.display = "none"
+    iconContentUnsaved()
+}
+
+buttonHideNewBook.onclick = (e) => {
+    hideNewBook()
+}
+
+hideNewBook = () => {
+    iconContentUnsaved()
+    newBookInput.style.display = "none"
+    newBookSubmit.style.display = "none"
+    buttonHideNewBook.style.display = "none"
+    buttonShowNewBook.style.display = "inline"
+}
+
+addBook = () => {
+    let bName = newBookInput.value
+    newBookInput.value = ""
+
+    if (bName != "" && bName) {
+        //Add new option to selector with name in value, api will create new bbok with
+        var newBook = document.createElement('option')
+        newBook.appendChild(document.createTextNode(bName))
+        newBook.value = bName
+        booksSelector.appendChild(newBook)
+
+        //select new option
+        booksSelector.value = bName
+    }
+    iconContentUnsaved()
+}
+
+/* ##################################################################
+#########################                ############################
+#########################   SHORTCUT     ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+
+document.onkeydown = (event) => {
+    if (event.ctrlKey || event.metaKey) {
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+            case 's':
+                if (event.preventDefault) {
+                    event.preventDefault()
+                }
+                else {
+                    event.returnValue = false
+                }
+                if(changeDetected) {
+                    quitAfterSave = true
+                    iconContentUnsaved()
+                }
+                else {
+                    window.location.href = "/notes"
+                }
+                break;
+            case 'e':
+                if (event.preventDefault) {
+                    event.preventDefault()
+                }
+                else {
+                    event.returnValue = false
+                }
+                switchEdit()
+                break;
+        }
+    }
 }

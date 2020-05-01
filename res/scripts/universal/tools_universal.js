@@ -160,6 +160,7 @@ exports.checkUserToken = (token) => {
                 resolveP(toResolve)
             })
         }).catch((err) => {
+            console.error(err)
             toResolve = {
                 status: "error",
                 code: "0000",

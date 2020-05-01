@@ -81,18 +81,34 @@ exports.get = (req, res) => {
                                 '<hr id="' + responseNote.note["shareWith"][i]["uid"] + "_hr" + '" class="shareListSeparator"></hr>'
                             }
                         }
-                
-                        res.render("note.ejs", {
-                            appTitleRedirect: tools_webclient.getAppTitleRedirect(req.session),
-                            pageTitle: tools_webclient.htmlspecialchars(responseNote["note"]["title"]),
-                            description: tools_webclient.removeHtmlTags(markdown_webclient.converter.makeHtml(responseNote["note"]["text"], 300)),
-                            content: content,
-                            shareList: shareList, 
-                            noteId: req.params.nid, 
-                            token: req.session.auth_token, 
-                            isOwner: responseNote["note"]["isOwner"], 
-                            canEdit: canEdit,
-                            apiHost: configs.get("domain")
+
+                        tools_webclient.getBooksDatalist(responseNote["note"]["book"]["bid"], req.session).then((htmlBooks) => {
+                            res.render("note.ejs", {
+                                appTitleRedirect: tools_webclient.getAppTitleRedirect(req.session),
+                                pageTitle: tools_webclient.htmlspecialchars(responseNote["note"]["title"]),
+                                description: tools_webclient.removeHtmlTags(markdown_webclient.converter.makeHtml(responseNote["note"]["text"], 300)),
+                                content: content,
+                                shareList: shareList, 
+                                noteId: req.params.nid, 
+                                token: req.session.auth_token, 
+                                isOwner: responseNote["note"]["isOwner"], 
+                                canEdit: canEdit,
+                                apiHost: configs.get("domain"),
+                                errorTextCantSave: lang.get("cant_autosave_note", req.session.lang),
+                                errorTextWaitWhileSaving: lang.get("please_wait_while_saving_your_note", req.session.lang),
+    
+                                text: tools_webclient.htmlspecialchars(responseNote["note"]["text"]), 
+                                titleHolder: lang.get("nameless", req.session.lang), 
+                                textHolder: lang.get("start_writing_something_incredible", req.session.lang),
+                                title: responseNote["note"]["title"],
+                                error: "",
+                                booksInputLabel: lang.get("choose_a_book", req.session.lang),
+                                books: htmlBooks, 
+                            })
+                        }).catch((err) => {
+                            // Unknown Error
+                            console.error(err)
+                            tools_webclient.sendErrors("0000", req, res)
                         })
                     }
                     else {

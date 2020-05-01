@@ -1,70 +1,119 @@
 <!DOCTYPE HTML>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title><%- pageTitle %> | bluewrite</title>
-    <meta name="description" content="<%- description %>" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="noindex">
+    <head>
+        <meta charset="utf-8">
+        <title><%- pageTitle %> | bluewrite</title>
+        <meta name="description" content="<%- description %>" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="robots" content="noindex">
 
-    <%- include head.ejs %>
-    
-    <link rel="stylesheet" href="/files/css/general.css?v=7" />
-    <link rel="stylesheet" href="/files/css/markdown.css?v=7" />
-    <link rel="stylesheet" href="/files/css/note.css?v=7" />
-  </head>
-  <body>
-    <div id="toolsBar">
-        <a href="/notes" id="returnButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg></a>
+        <%- include head.ejs %>
+        
+        <link rel="stylesheet" href="/files/css/general.css?v=7" />
+        <link rel="stylesheet" href="/files/css/markdown.css?v=7" />
+        <link rel="stylesheet" href="/files/css/note.css?v=7" />
+        <link rel="stylesheet" href="/files/css/lepture-editor.custom.css?v=7" />
+    </head>
+    <body>
+        <div id="content">
+            <div id="note-toolsBar">
+                <button id="returnButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg></button>
+        
+                <div id="separator"></div>
+        
+                <!-- <a href="/edit/note/<%- noteId %>" id="edit" class="" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></a> -->
+                <button id="edit" onclick="switchEdit()" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></button>
 
-        <div id="separator"></div>
+                <div id="switchMode">
+                    <button id="normalMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#note"></use></svg></button>
+                    <button id="diapoMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#presentation"></use></svg></button>
+                    <button id="newsMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#newspaper"></use></svg></button>
+                </div>
+        
+                <button id="shareButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#share"></use></svg></button>
+                <button id="deleteButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#trash"></use></svg></button>
+        
+                <button id="fullscreen">
+                    <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen"></use></svg>
+                    <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen_exit"></use></svg>
+                </button>
+            </div>
+            <div id="modalShare">
+                <div id="shareList">
+                    <%- shareList %>
+                </div>
+                <div id="addShare">
+                    <input id="addShareInput"/>
+                    <button id="addShareSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#send"></use></svg></button>
+                </div>
+            </div>
+            <div id="modalDelete">
+                <p>Supprimer ?</p>
+                <div id="deleteAnswer">
+                    <button id="deleteYes">Supprimer</button>
+                    <button id="deleteNo">Annuler</button>
+                </div>
+            </div>
 
-        <a href="/edit/note/<%- noteId %>" id="edit" class="" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></a>
+            <div id="modalErrorWrapper">
+                <div id="modalError">
+                    <p id="modalErrorText">ERROR TEXT</p>
+                    <div id="modalErrorAnswerDiv">
+                        <button id="modalErrorAnswer">OK</button>
+                    </div>
+                </div>
+            </div>
 
-        <div id="switchMode">
-            <button id="normalMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#note"></use></svg></button>
-            <button id="diapoMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#presentation"></use></svg></button>
-            <button id="newsMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#newspaper"></use></svg></button>
+            <div id="note-content">
+                <%- content %>
+            </div>
+
+            </div>
+
+            <div id="edit-content">
+                <form method="post" action="" id="editForm">
+        
+                    <input id="titleInput" type="text" name="title" placeholder="<%- titleHolder %>" value="<%- title %>" spellcheck="false" autocomplete="off">
+                    <div id="titleText" class="noteText" contenteditable="true" placeholder="<%- titleHolder %>" spellcheck="false"></div>
+                    <div id="title_separator"></div>
+        
+                    <%- error %>
+                    <p id="booksInputLabel-top"><%- booksInputLabel %></p>
+                    <%- books %>
+                    <a href="#" id="buttonShowNewBook" class="buttonNewBook"><svg>
+                            <use xlink:href="/files/cicons/cicons.svg?v=7#add"></use>
+                        </svg></a>
+                    <p id="booksInputLabel-right"><%- booksInputLabel %></p>
+                    <br />
+                    <a href="#" id="buttonHideNewBook" class="buttonNewBook"><svg>
+                            <use xlink:href="/files/cicons/cicons.svg?v=7#cross"></use>
+                        </svg></a>
+                    <input id="newBookInput" type="text" name="newBookInput" spellcheck="false">
+                    <a href="#" id="newBookSubmit"><svg>
+                            <use xlink:href="/files/cicons/cicons.svg?v=7#send"></use>
+                        </svg></a>
+        
+                    <textarea id="noteInput" class="textInput" name="text" placeholder="<%- textHolder %>" spellcheck="false"><%- text %></textarea>
+        
+                    <div id="editor-loading">
+                        <svg><use xlink:href="/files/cicons/cicons.svg?v=7#loading"></use></svg>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <button id="shareButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#share"></use></svg></button>
-        <button id="deleteButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#trash"></use></svg></button>
-
-        <button id="fullscreen">
-            <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen"></use></svg>
-            <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen_exit"></use></svg>
-        </button>
-    </div>
-
-    <div id="modalShare">
-      <div id="shareList">
-        <%- shareList %>
-      </div>
-      <div id="addShare">
-        <input id="addShareInput"/>
-        <button id="addShareSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#send"></use></svg></button>
-      </div>
-    </div>
-
-    <div id="modalDelete">
-      <p>Supprimer ?</p>
-      <div id="deleteAnswer">
-        <button id="deleteYes">Supprimer</button>
-        <button id="deleteNo">Annuler</button>
-      </div>
-    </div>
-
-    <div id="content">
-      <%- content %>
-    </div>
-    <!-- <a href="/edit/<%- noteId %>" id="edit" class="floatingButton" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></a> -->
-
-    <p id="token" style="display: none;"><%- token %></p>
-    <p id="nid" style="display: none;"><%- noteId %></p>
-    <p id="isOwner" style="display: none;"><%- isOwner %></p>
-    <p id="canEdit" style="display: none;"><%- canEdit %></p>
-    <p id="apiHost" style="display: none;"><%- apiHost %></p>
-    <script src="/files/js/note.js?v=7"></script>
-    <script src="/files/js/fullscreen.js?v=7"></script>
-  </body>
+        <p id="token" style="display: none;"><%- token %></p>
+        <p id="nid" style="display: none;"><%- noteId %></p>
+        <p id="isOwner" style="display: none;"><%- isOwner %></p>
+        <p id="canEdit" style="display: none;"><%- canEdit %></p>
+        <p id="apiHost" style="display: none;"><%- apiHost %></p>
+        <p id="errorTextCantSave" style="display: none;"><%- errorTextCantSave %></p>
+        <p id="errorTextWaitWhileSaving" style="display: none;"><%- errorTextWaitWhileSaving %></p>
+        <script src="/files/js/marked.js?v=7"></script>
+        <script src="/files/js/leptur-editor.custom.js?v=7"></script>
+        <script src="/files/js/showdown.min.js?v=7"></script>
+        <script src="/files/js/fullscreen.js?v=7"></script>
+        <script src="/files/js/note.js?v=7"></script>
+        </body>
+    </body>
 </html>

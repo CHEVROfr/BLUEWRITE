@@ -21,15 +21,9 @@ exports.get = (req, res) => {
 
         var connectOrSeeNotes = '<p id="connectOrSeeNotes"><a href="/notes">' + lang.get("my_notes", req.session.lang) + "</a></p>"
 
-        tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                connectOrSeeNotes = '<p id="connectOrSeeNotes"><a href="/notes">' + lang.get("log_in", req.session.lang) + "</a></p>"
-            }
-
-            res.render("index.ejs", {
-                connectOrSeeNotes: connectOrSeeNotes,
-                content: html
-            })
+        res.render("index.ejs", {
+            connectOrSeeNotes: connectOrSeeNotes,
+            content: html
         })
     })
 }

@@ -49,10 +49,9 @@ body {
 
 #content {
     margin-top: 2em;
-    margin-bottom: 5em;
+    margin-bottom: 2em;
     margin-left: var(--content-margin);
     margin-right: var(--content-margin);
-    min-height: 100%;
 }
 
 .icon {
@@ -96,15 +95,18 @@ body {
     .floatingButton i {
         padding: 17px;
     }
+
+    #content {
+        margin-top: .5em;
+        margin-left: .5em;
+        margin-right: .5em;
+        margin-bottom: .5em;
+    }
 }
 
 @media all and (max-width: 1030px) {
     body {
         --content-margin: 2em;
-    }
-
-    #content {
-        margin-top: 2em;
     }
 }
 
