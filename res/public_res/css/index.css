@@ -69,7 +69,6 @@
 
 .pros-element {
     width: 20%;
-    margin: auto;
     margin-bottom: 3em;
 }
 
@@ -95,6 +94,7 @@
 
     .pros-element {
         width: 50%;
+        margin: auto;
     }
 
     .downIcon svg {
