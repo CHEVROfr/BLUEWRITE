@@ -26,7 +26,7 @@ exports.get = (req, res) => {
                     lang.get("nameless", req.session.lang), 
                     lang.get("start_writing_something_incredible", 
                     req.session.lang), 
-                    0
+                    ""
                 ).then((responseAdd) => {
                     res.redirect("/note/" + responseAdd["nid"] + "#edit")
                 }).catch((err) => {
