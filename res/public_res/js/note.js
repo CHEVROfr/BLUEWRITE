@@ -352,6 +352,8 @@ window.onload = () => {
         }),
         text = editor.codemirror.getValue()
         document.getElementById("noteText").innerHTML = converter.makeHtml(text)
+
+        document.getElementById("noteTitle").innerText = titleInput.value
     }
 }
 
