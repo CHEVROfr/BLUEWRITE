@@ -22,7 +22,7 @@ getFr = (id) => {
         case "nameless":
             return "Sans nom"
         case "start_writing_something_incredible":
-            return "Commencer à écrire quelque chose d'incroyable !"
+            return "Commencez à écrire quelque chose d'incroyable !"
         case "settings":
             return "Paramètres"
         case "sign_out":
