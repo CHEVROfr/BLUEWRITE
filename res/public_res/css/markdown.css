@@ -14,7 +14,7 @@
     font-size: 1.15rem;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: var(--white);
+    color: #ffffff;
     word-wrap: break-word;
 }
 
@@ -42,7 +42,7 @@
 
 .noteText pre,
 .editor-preview pre {
-    background-color: var(--dark-grey);
+    background-color: #2e2e2e;
     padding: 15px;
     border-radius: 3px;
     font-size: 1rem;
@@ -53,12 +53,12 @@
 
 .noteText pre code,
 .editor-preview pre code {
-    color: var(--white);
+    color: #ffffff;
 }
 
 .noteText p>code,
 .editor-preview p>code {
-    background-color: var(--dark-grey);
+    background-color: #2e2e2e;
     padding: 1px;
     padding-right: 3px;
     padding-left: 3px;
@@ -66,7 +66,7 @@
 }
 .noteText li>code,
 .editor-preview li>code {
-    background-color: var(--dark-grey);
+    background-color: #2e2e2e;
     padding: 1px;
     padding-right: 3px;
     padding-left: 3px;
@@ -82,7 +82,7 @@
 .editor-preview a {
     text-decoration: underline;
     font-weight: 600;
-    color: var(--white);
+    color: #ffffff;
 }
 
 .noteText img,

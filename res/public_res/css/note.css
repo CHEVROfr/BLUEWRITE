@@ -36,7 +36,7 @@
     border: none;
     padding: 3px;
     border-radius: 5px;
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.2em;
     vertical-align: middle;
     flex: 1;
@@ -143,7 +143,7 @@
 
 #modalDelete div button {
     background: #0d0d0d;
-    color: var(--white);
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 5px;
@@ -154,7 +154,7 @@
 }
 
 #modalDelete div button:hover {
-    background: var(--dark-grey);
+    background: #0d0d0d;
 }
 
 #note-toolsBar {
@@ -256,19 +256,19 @@ button {
     margin-top: 10px;
     margin-bottom: 35px;
     font-size: 2em;
-    color: var(--white);
+    color: #ffffff;
 }
 
 #little_separator {
     width: 15em;
     height: 2px;
-    background: var(--grey);
+    background: #aaaaaa;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .noteBook {
-    color: var(--light-grey);
+    color: #f1f1f1;
     text-decoration: none;
 }
 
@@ -314,20 +314,20 @@ button {
     border: none;
     font-size: 2em;
     font-family: "Bitstream", "OpenSans", sans-serif;
-    color: var(--white);
+    color: #ffffff;
     min-height: 1em;
     margin-bottom: .4em;
 }
 
 #booksInputLabel-top {
     display: none;
-    color: var(--grey);
+    color: #aaaaaa;
     font-size: 1em;
 }
 
 #booksInputLabel-right {
     display: inline;
-    color: var(--grey);
+    color: #aaaaaa;
     font-size: 1em;
 }
 
@@ -335,11 +335,11 @@ button {
     display: none;
     margin-top: 10px;
     background: #0d0d0d;
-    border-color: var(--light-grey);
+    border-color: #f1f1f1;
     border-style: solid;
     padding: 3px;
     border-radius: 5px;
-    color: var(--white);
+    color: #ffffff;
     width: 15em;
     font-size: 1.2em;
 }
@@ -366,9 +366,9 @@ button {
 
 #buttonHideNewBook {
     display: none;
-    background: var(--red);
+    background: #FF8080;
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
     font-size: 1em;
     border-radius: 50%;
     padding: 6px 6px 1px 5px;
@@ -389,7 +389,7 @@ button {
     display: inline;
     background: #00b4c4;
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
     font-size: 1em;
     border-radius: 50%;
     padding-top: 5px;
@@ -411,11 +411,11 @@ button {
 
 #booksSelector {
     background: #0d0d0d;
-    border-color: var(--white);
+    border-color: #ffffff;
     border-style: solid;
     border-radius: 5px;
     padding: 3px;
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.2em;
 }
 

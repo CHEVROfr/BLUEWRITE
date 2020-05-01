@@ -16,13 +16,13 @@
 }
 
 #title {
-    color: var(--white);
+    color: #ffffff;
     font-size: 3.5em;
     margin: 0;
 }
 
 #desc {
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.7em;
     margin: 0;
 }
@@ -35,7 +35,7 @@
 
 .downIcon {
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
     display: inline-block;
 }
 
@@ -54,7 +54,7 @@
 
 .downBar {
     width: 100%;
-    background: var(--white);
+    background: #ffffff;
     height: 0.2em;
 }
 
@@ -77,7 +77,7 @@
 }
 
 .pros-element p {
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.5em;
 }
 

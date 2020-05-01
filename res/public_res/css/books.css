@@ -1,6 +1,6 @@
 #noNotes {
     font-size: 1.2em;
-    color: var(--white);
+    color: #ffffff;
 }
 
 #notes {
@@ -16,7 +16,7 @@
     background: #00b4c4;
     padding: 5px;
     border-radius: 3px;
-    color: var(--white);
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,7 +54,7 @@
     font-size: 2em;
     margin-right: 5%;
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
 }
 
 .bookName .del svg {
@@ -92,7 +92,7 @@
     position: relative;
     left: -50%;
     display: block;
-    background: var(--dark-grey);
+    background: #0d0d0d;
     z-index: 100;
     border-radius: 5px;
 }
@@ -132,7 +132,7 @@
     border-radius: 5px;
     font-size: 1.2em;
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
 }
 
 .delPopupMsg {
@@ -147,7 +147,7 @@
 
 /*/////////////////////////////////NOTES/////////////////////////////////*/
 .noNotes {
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.2em;
     text-align: center;
 }
@@ -156,7 +156,7 @@
     text-decoration: none;
     display: block;
     border-bottom-style: solid;
-    border-bottom-color: var(--light-grey);
+    border-bottom-color: #f1f1f1;
     border-bottom-width: 1px;
 }
 .noteBox:hover .noteTitle {
@@ -176,11 +176,11 @@
     overflow: hidden;
     margin-top: 0.3em;
     font-size: 1em;
-    color: var(--grey);
+    color: #aaaaaa;
 }
 
 .noteDate {
-    color: var(--grey);
+    color: #aaaaaa;
     margin-bottom: 0.3em;
     display: inline-block;
     margin-right: 10px;
@@ -189,7 +189,7 @@
 .noteTitle {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
-    color: var(--white);
+    color: #ffffff;
     font-weight: bold;
     font-size: 1.3em;
     display: inline-block;

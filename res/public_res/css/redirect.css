@@ -21,13 +21,13 @@
 }
 
 #redirectMessage {
-    color: var(--white);
+    color: #ffffff;
     font-size: 1.2em;
 }
 
 #redirectLink {
     text-decoration: none;
-    color: var(--white);
+    color: #ffffff;
     background: #00b4c4;
     border-radius: 5px;
     font-size: 1.7em;
