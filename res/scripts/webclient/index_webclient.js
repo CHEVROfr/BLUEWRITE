@@ -12,7 +12,7 @@ exports.get = (req, res) => {
                 '<h2 id="desc">' + lang.get("synchronized_notes_application", req.session.lang) + "</h2>" +
             '</span>' +
         '</div></div>' +
-        '<div id="downBox"><span class="downBar"></span><a href="#pros" class="downIcon"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_bottom"></use></svg></a><span class="downBar"></span></div>' +
+        '<div id="downBox"><span class="downBar"></span><a href="#pros" class="downIcon"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#arrow_bottom"></use></svg></a><span class="downBar"></span></div>' +
         '<div id="pros">' +
             '<div class="pros-element"><img src="/files/imgs/pros-1.svg" /><p>' + lang.get("your_notes_on_all_your_devices", req.session.lang) + '</p></div>' +
             '<div class="pros-element"><img src="/files/imgs/pros-3.png" /><p>' + lang.get("minimalist_interface_markdown_rendering", req.session.lang) + '</p></div>' +

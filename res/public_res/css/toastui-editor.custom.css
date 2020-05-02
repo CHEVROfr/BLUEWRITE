@@ -1892,4 +1892,8 @@ pre.CodeMirror-line {
     border-left-width: 2px !important;
 }
 
+.tui-md-code, .tui-md-code-block {
+    font-family: "FiraCode";
+}
+
 /* END CUSTOM */

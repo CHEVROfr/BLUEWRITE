@@ -54,6 +54,7 @@
 .noteText pre code,
 .editor-preview pre code {
     color: #ffffff;
+    font-family: "FiraCode";
 }
 
 .noteText p>code,
@@ -63,6 +64,7 @@
     padding-right: 3px;
     padding-left: 3px;
     border-radius: 3px;
+    font-family: "FiraCode";
 }
 .noteText li>code,
 .editor-preview li>code {
@@ -71,6 +73,7 @@
     padding-right: 3px;
     padding-left: 3px;
     border-radius: 3px;
+    font-family: "FiraCode";
 }
 
 .noteText pre p,

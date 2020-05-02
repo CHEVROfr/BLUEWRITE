@@ -9,8 +9,8 @@
 
     <%- include head.ejs %>
     
-    <link rel="stylesheet" href="/files/css/general.css?v=7" />
-    <link rel="stylesheet" href="/files/css/notes.css?v=7" />
+    <link rel="stylesheet" href="/files/css/general.css?v=8" />
+    <link rel="stylesheet" href="/files/css/notes.css?v=8" />
   </head>
   <body>
     <div id="toolsBar">
@@ -18,34 +18,34 @@
         <p id="appTitleBy">, by</p>
         <a href="https://chevro.fr" id="appTitleChevroLink"><h2 id="appTitleChevro">CHEVRO</h2></a>
         <div id="separator"></div>
-        <button id="searchButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#search"></use></svg></button>
-        <a href="/settings" id="settings"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#settings"></use></svg></a>
+        <button id="searchButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#search"></use></svg></button>
+        <a href="/settings" id="settings"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#settings"></use></svg></a>
 
         <button id="fullscreen">
-            <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen"></use></svg>
-            <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=7#fullscreen_exit"></use></svg>
+            <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=8#fullscreen"></use></svg>
+            <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=8#fullscreen_exit"></use></svg>
         </button>
     </div>
 
     <div id="searchForm">
       <input type="text" id="searchInput" name="searchInput" placeholder="Tapez..." value="">
-      <button id="searchSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#search"></use></svg></button>
+      <button id="searchSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#search"></use></svg></button>
     </div>
 
     <div id="content">
       <%- content %>
     </div>
-    <a href="/books" id="books" class="floatingButton" title=""><svg><use xlink:href="/files/cicons/cicons.svg?v=7#book"></use></svg></a>
-    <a href="/add/note" id="add" class="floatingButton" title="Ctrl + A"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#add"></use></svg></a>
+    <a href="/books" id="books" class="floatingButton" title=""><svg><use xlink:href="/files/cicons/cicons.svg?v=8#book"></use></svg></a>
+    <a href="/add/note" id="add" class="floatingButton" title="Ctrl + A"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#add"></use></svg></a>
 
     <p id="token" style="display: none;"><%- token %></p>
     <p id="uid" style="display: none;"><%- uid %></p>
     <p id="noOneStr" style="display: none;"><%- noOneStr %></p>
     <p id="apiHost" style="display: none;"><%- apiHost %></p>
 
-    <script src="/files/js/andmrkow.js?v=7"></script>
-    <script src="/files/js/notes.js?v=7"></script>
-    <script src="/files/js/searchNotes.js?v=7"></script>
-    <script src="/files/js/fullscreen.js?v=7"></script>
+    <script src="/files/js/andmrkow.js?v=8"></script>
+    <script src="/files/js/notes.js?v=8"></script>
+    <script src="/files/js/searchNotes.js?v=8"></script>
+    <script src="/files/js/fullscreen.js?v=8"></script>
   </body>
 </html>

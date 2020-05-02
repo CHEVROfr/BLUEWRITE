@@ -33,7 +33,7 @@ exports.note = function(noteObj, sess) {
                 bookName = lang.get("no_one", sess.lang)
             }
 
-            html += '<a href="/books?bid=' + this.book.bid + '#b_' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#book"></use></svg>' + tools_webclient.htmlspecialchars(bookName) + '</a>'
+            html += '<a href="/books?bid=' + this.book.bid + '#b_' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#book"></use></svg>' + tools_webclient.htmlspecialchars(bookName) + '</a>'
         }
         
         html += '<a href="/note/' + this.nid + '" class="noteText">' + tools_webclient.htmlspecialchars(tools_webclient.removeHtmlTags(markdown_webclient.converter.makeHtml(this.text))) + '</a>'
@@ -58,16 +58,16 @@ exports.books = function(booksObj, sess) {
                 books += '<div id="b_' + this.books[forRBooks]["bid"] + '" class="bookName" onclick="showhide(\'' + this.books[forRBooks]["bid"] + '\', event)">' + 
                 '<h2 class="bookNameTitle">' + this.books[forRBooks]["name"] + "</h2>" +
                 '<a href="#popdel_' + this.books[forRBooks]["bid"] + '" class="del">' + 
-                '<svg id="s_' + this.books[forRBooks]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=7#trash"></use></svg></a>' +
+                '<svg id="s_' + this.books[forRBooks]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=8#trash"></use></svg></a>' +
                 '<div class="overlay" id="popdel_' + this.books[forRBooks]["bid"] + '"><div class="centerPopup"><div class="delPopup">' +
-                    '<a class="closeDelPopup" href="#"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#cross"></use></svg></a>' +
+                    '<a class="closeDelPopup" href="#"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#cross"></use></svg></a>' +
                     '<p class="delPopupMsg">' + lang.get("delete_book_or_notes_and_book", sess.lang) + '</p>' +
                     '<div class="delPopupAnsBox">' +
                         '<a href="/delete/book/' + this.books[forRBooks]["bid"] + '?all=true">' + lang.get("delete_book_and_notes", sess.lang) + '</a>' +
                         '<a href="/delete/book/' + this.books[forRBooks]["bid"] + '">' + lang.get("delete_only_book", sess.lang) + '</a>' +
                     "</div>" +
                 '</div></div></div>' +
-                '<svg id="i_' + this.books[forRBooks]["bid"] + '" class="arrow"><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg>' +
+                '<svg id="i_' + this.books[forRBooks]["bid"] + '" class="arrow"><use xlink:href="/files/cicons/cicons.svg?v=8#arrow_left"></use></svg>' +
                 '</div><div class="bookNotes" id="' + this.books[forRBooks]["bid"] + '">'
                 let noBook = true
                 for(forRNotes in this.notes) { // read all notes
@@ -125,7 +125,7 @@ exports.books = function(booksObj, sess) {
         books += '<div id="b_0" class="bookName" onclick="showhide(\'0\')">' + 
         '<h2 class="bookNameTitle">Autres</h2>' +
         //'<i id="i_0" class="icon arrow">&#xe908;</i>' +
-        '<svg id="i_0" class="arrow"><use xlink:href="/files/cicons/cicons.svg?v=7#arrow_left"></use></svg>' +
+        '<svg id="i_0" class="arrow"><use xlink:href="/files/cicons/cicons.svg?v=8#arrow_left"></use></svg>' +
         '</div><div class="bookNotes" id="0">'
         for(forRNotes in noBookNotes) {
             books += '<a class="noteBox" href="/note/' + noBookNotes[forRNotes]["nid"] + '">' +

@@ -30,7 +30,7 @@ exports.get = (req, res) => {
                         if(responseNote["note"]["book"]["bid"] == "0") {
                             bookName = lang.get("no_one", req.session.lang)
                         }
-                        content += '<a href="/books?bid=' + responseNote["note"]["book"]["bid"] + '#b_' + responseNote["note"]["book"]["bid"] + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#book"></use></svg><p class="noteBookName">' + bookName + '</p></a>'
+                        content += '<a href="/books?bid=' + responseNote["note"]["book"]["bid"] + '#b_' + responseNote["note"]["book"]["bid"] + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#book"></use></svg><p class="noteBookName">' + bookName + '</p></a>'
                         content += '<div id="little_separator"></div>'
                         
                         content += '<div class="noteText" id="noteText">' + 
@@ -59,23 +59,23 @@ exports.get = (req, res) => {
                                 '<p class="shareListName">' + responseNote.note["shareWith"][i]["name"] + '</p>'
                                 if(responseNote.note["shareWith"][i]["canEdit"]) {
                                     if(responseNote["note"]["isOwner"]) {
-                                        shareList += '<button class="shareListCanEdit" canEdit="true" onclick="setCanEdit(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></button>'
+                                        shareList += '<button class="shareListCanEdit" canEdit="true" onclick="setCanEdit(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg></button>'
                                     }
                                     else {
-                                        shareList += '<button class="shareListCanEdit"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#edit"></use></svg></button>'
+                                        shareList += '<button class="shareListCanEdit"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg></button>'
                                     }
                                 }
                                 else {
                                     if(responseNote["note"]["isOwner"]) {
-                                        shareList += '<button class="shareListCanEdit" canEdit="false" onclick="setCanEdit(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#eye"></use></svg></button>'
+                                        shareList += '<button class="shareListCanEdit" canEdit="false" onclick="setCanEdit(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#eye"></use></svg></button>'
                                     }
                                     else {
-                                        shareList += '<button class="shareListCanEdit"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#eye"></use></svg></button>'
+                                        shareList += '<button class="shareListCanEdit"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#eye"></use></svg></button>'
                                     }
                                 }
                                 shareList += '<div class="separator"></div>'
                                 if(responseNote["note"]["isOwner"]) {
-                                    shareList += '<button class="shareListRemove" onclick="removeShareWith(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#trash"></use></svg></button>'
+                                    shareList += '<button class="shareListRemove" onclick="removeShareWith(this, \'' + responseNote.note["shareWith"][i]["uid"] + '\')"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#trash"></use></svg></button>'
                                 }
                                 shareList += '</div>' +
                                 '<hr id="' + responseNote.note["shareWith"][i]["uid"] + "_hr" + '" class="shareListSeparator"></hr>'

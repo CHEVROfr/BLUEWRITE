@@ -97,7 +97,7 @@ Note = function(noteObj, sess) {
                 bookName = noOneStr
             }
 
-            html += '<a href="/books?bid=' + this.book.bid + '#b_' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#book"></use></svg>' + htmlspecialchars(bookName) + '</a>'
+            html += '<a href="/books?bid=' + this.book.bid + '#b_' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#book"></use></svg>' + htmlspecialchars(bookName) + '</a>'
         }        
         
         html += '<a href="/note/' + this.nid + '" class="noteText">' + htmlspecialchars(without(this.text)) + '</a>'
@@ -114,7 +114,7 @@ search = (query) => {
     }
     else {
         isSearching = true
-        content.innerHTML = '<div id="loading"><svg><use xlink:href="/files/cicons/cicons.svg?v=7#loading"></use></svg></div>'
+        content.innerHTML = '<div id="loading"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#loading"></use></svg></div>'
         const data = new URLSearchParams();
 
         data.append("token", token)
