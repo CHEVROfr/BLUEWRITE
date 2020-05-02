@@ -41,6 +41,7 @@
     vertical-align: middle;
     flex: 1;
     min-width: 0;
+    font-family: "FiraCode";
 }
 
 #addShareSubmit {
@@ -313,7 +314,6 @@ button {
     background: none;
     border: none;
     font-size: 2em;
-    font-family: "Bitstream", "OpenSans", sans-serif;
     color: #ffffff;
     min-height: 1em;
     margin-bottom: .4em;
@@ -342,6 +342,7 @@ button {
     color: #ffffff;
     width: 15em;
     font-size: 1.2em;
+    font-family: "FiraCode";
 }
 
 #newBookSubmit {
@@ -351,6 +352,7 @@ button {
     font-size: 1.5em;
     vertical-align: middle;
     transition: fill .3s;
+    font-family: "FiraCode";
 }
 
 #newBookSubmit:hover svg {
@@ -417,6 +419,7 @@ button {
     padding: 3px;
     color: #ffffff;
     font-size: 1.2em;
+    font-family: "FiraCode";
 }
 
 #noteInput {

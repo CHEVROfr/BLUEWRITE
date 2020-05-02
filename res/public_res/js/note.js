@@ -56,26 +56,6 @@ showErrorModal = (errorText) => {
 #########################                ############################
 #####################################################################
 ###################################################################*/
-
-let editShowed = false
-switchEdit = () => {
-    if(editShowed) {
-        setNewMarkdown()
-        document.getElementById('edit-content').style.display = 'none'
-        document.getElementById('note-content').style.display = 'block'
-        editShowed = false
-    }
-    else {
-        document.getElementById('edit-content').style.display = 'block'
-        document.getElementById('note-content').style.display = 'none'
-        editShowed = true
-    }
-}
-
-if(window.location.hash == "#edit") {
-    switchEdit()
-}
-
 returnButton.onclick = () => {
     window.location.href = "/notes"
 }
@@ -317,23 +297,49 @@ var booksSelector = document.getElementById('booksSelector')
 
 let changeDetected = false
 let quitAfterSave = false
-var editor
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////INITIALIZE EDITOR */
 setNewMarkdown = () => {}
+var editor
 
-window.onload = () => {
-    editor = new Editor({
-        toolbar: []
-    })
-    editor.render()
+createEditor = () => {
     document.getElementById("editor-loading").style.display = "none"
 
-    let editorContent = document.getElementsByClassName("CodeMirror-code")
+    editor = new toastui.Editor({
+        el: document.querySelector('#noteEditor'),
+        previewStyle: 'tab',
+        height: '73vh',
+        placeholder: noteInput.placeholder,
+        initialValue: noteInput.value,
+        toolbarItems: [
+            'heading',
+            'bold',
+            'italic',
+            'strike',
+            'divider',
+            'hr',
+            'quote',
+            'divider',
+            'ul',
+            'ol',
+            'task',
+            'indent',
+            'outdent',
+            'divider',
+            'table',
+            'image',
+            'link',
+            'divider',
+            'code',
+            'codeblock'
+        ]
+    })
 
+    let editorContent = document.getElementsByClassName("CodeMirror-code")
     // Create an observer instance linked to the callback function
     var observer = new MutationObserver((mutationsList, observer) => {
         for(let mutation of mutationsList) {
+            noteInput.value = editor.getMarkdown()
             iconContentUnsaved()
         }
     })
@@ -350,7 +356,7 @@ window.onload = () => {
             tasklists: true,
             tables: true
         }),
-        text = editor.codemirror.getValue()
+        text = editor.getMarkdown()
         document.getElementById("noteText").innerHTML = converter.makeHtml(text)
 
         document.getElementById("noteTitle").innerText = titleInput.value
@@ -363,7 +369,7 @@ saveEdit = () => {
     data.append("token", token)
     data.append("nid", nid)
     data.append("title", titleInput.value)
-    data.append("text", editor.codemirror.getValue())
+    data.append("text", editor.getMarkdown())
     data.append("book", booksSelector.options[booksSelector.selectedIndex].value)
 
     fetch(apiHost + '/api/edit', {
@@ -536,4 +542,31 @@ document.onkeydown = (event) => {
                 break;
         }
     }
+}
+
+/* ##################################################################
+#########################                ############################
+#########################   START        ###########################
+#########################                ############################
+#####################################################################
+###################################################################*/
+
+let editShowed = false
+switchEdit = () => {
+    if(editShowed) {
+        setNewMarkdown()
+        document.getElementById('edit-content').style.display = 'none'
+        document.getElementById('note-content').style.display = 'block'
+        editShowed = false
+    }
+    else {
+        document.getElementById('edit-content').style.display = 'block'
+        document.getElementById('note-content').style.display = 'none'
+        createEditor()
+        editShowed = true
+    }
+}
+
+if(window.location.hash == "#edit") {
+    switchEdit()
 }
