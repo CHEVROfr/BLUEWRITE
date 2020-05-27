@@ -26,6 +26,12 @@ let deleteNo = document.getElementById("deleteNo")
 let modalDelete = document.getElementById("modalDelete")
 let modalDeleteShow = false
 
+let buttonExport = document.getElementById("buttonExport")
+let modalExport = document.getElementById("modalExport")
+let modalExportShow = false
+let exportPdfSelectTheme = document.getElementById("exportPdfSelectTheme")
+let exportPdfButton = document.getElementById("exportPdfButton")
+
 /* ##################################################################
 #########################                ############################
 #########################   ERROR MODAL  ###########################
@@ -69,18 +75,40 @@ if(isOwner != "true") {
     addShare.removeChild(addShareSubmit)
 }
 
+hideModals = () => {
+    /*HIDE MODAL DELETE*/
+    modalDeleteShow = false
+    modalDelete.style.display = "none"
+    /*HIDE MODAL SHARE*/
+    modalShow = false
+    modalShare.style.display = "none"
+    /*HIDE MODAL EXPORT*/
+    modalExportShow = false
+        modalExport.style.display = "none"
+}
+
+buttonExport.onclick = (e) => {
+    if(modalExportShow) {
+        modalExportShow = false
+        modalExport.style.display = "none"
+    }
+    else {
+        hideModals()
+        modalExportShow = true
+        modalExport.style.display = "block"
+    }
+}
+
 shareButton.onclick = (e) => {
     if(modalShow) {
         modalShow = false
         modalShare.style.display = "none"
     }
     else {
+        hideModals()
         modalShow = true
         modalShare.style.display = "block"
         addShareInput.focus()
-        /*HIDE MODAL DELETE*/
-        modalDeleteShow = false
-        modalDelete.style.display = "none"
     }
 }
 
@@ -90,11 +118,9 @@ deleteButton.onclick = (e) => {
         modalDelete.style.display = "none"
     }
     else {
+        hideModals()
         modalDeleteShow = true
         modalDelete.style.display = "block"
-        /*HIDE MODAL SHARE*/
-        modalShow = false
-        modalShare.style.display = "none"
     }
 }
 
@@ -113,12 +139,10 @@ document.body.onclick = (e) => {
     if (event.target.closest('#modalShare')) return
     if (event.target.closest('#deleteButton')) return
     if (event.target.closest('#modalDelete')) return
+    if (event.target.closest('#buttonExport')) return
+    if (event.target.closest('#modalExport')) return
 
-    modalShow = false
-    modalShare.style.display = "none"
-
-    modalDeleteShow = false
-    modalDelete.style.display = "none"
+    hideModals()
 }
 
 addShareSubmit.onclick = (e) => {
@@ -278,6 +302,27 @@ removeShareWith = (obj, uid) => {
         })
     })
 }
+
+///////////////////////////////////////// EXPORT
+showExportDiv = (tabId, buttonId) => {
+    tabs = document.getElementsByClassName("exportDivs")
+    for(i=0; i<tabs.length; i++) {
+        tabs[i].style.display = "none"
+    }
+
+    buttons = document.getElementsByClassName("showExportButton")
+    for(i=0; i<buttons.length; i++) {
+        buttons[i].className = "showExportButton"
+    }
+
+    document.getElementById(tabId).style.display = "inline-block"
+    document.getElementById(buttonId).className += " selected"
+}
+
+exportPdfSelectTheme.onchange = () => {
+    exportPdfButton.href = "/note/" + nid + '/pdf?theme=' + exportPdfSelectTheme.value
+}
+exportPdfButton.href = "/note/" + nid + '/pdf?theme=' + exportPdfSelectTheme.value
 
 /* ##################################################################
 #########################                ############################

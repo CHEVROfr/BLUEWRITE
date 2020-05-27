@@ -4,7 +4,7 @@ var bodyParser = require("body-parser")
 var session = require('express-session')
 var fs = require("fs")
 
-var headers = require('headersfromextension')
+var mime_ext = require('mimetype-extension')
 
 /////CONF/////
 var configs = require("./res/configs/configs")
@@ -106,6 +106,7 @@ app.get("/notes", (req, res) => require("./res/scripts/webclient/notes_webclient
 app.get("/books", (req, res) => require("./res/scripts/webclient/books_webclient").get(req, res))
 
 app.get("/note/:nid", (req, res) => require("./res/scripts/webclient/note_webclient").get(req, res))
+app.get("/note/:nid/:format", (req, res) => require("./res/scripts/webclient/note_webclient").get(req, res))
 
 /* app.post("/edit/note/:nid", (req, res) => require("./res/scripts/webclient/edit_webclient").post(req, res)) */
 
@@ -131,19 +132,17 @@ app.get("/logout", (req, res) => require("./res/scripts/webclient/logout_webclie
 
     fs.readFile("./res/public_res/" + folder + "/" + req.params.fileName, "", (err, data) => {
         if(err) {
-            res.setHeader('Content-Type', headers.get("html"))
             tools_webclient.sendErrors(404, req, res)
         }
         else {
             res.header('Access-Control-Allow-Origin', '*')
-            res.setHeader('Content-Type', headers.get(fileExt))
+            res.setHeader("Content-Type", mime_ext.get(fileExt))
             res.send(data)
         }
     })
 })
 
 app.use((req, res) => {
-    res.setHeader('Content-Type', headers.get("html"))
     tools_webclient.sendErrors(404, req, res)
 })
 app.listen(configs.get("port"))

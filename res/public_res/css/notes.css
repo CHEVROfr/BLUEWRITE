@@ -27,11 +27,11 @@
 }
 
 .noteText {
-    line-height: 1em;
+    line-height: 1rem;
     max-height: 3em;
     overflow: hidden;
     margin-top: 0.3em;
-    font-size: 1em;
+    font-size: 1rem;
     color: #aaaaaa;
     display: block;
     text-decoration: none;

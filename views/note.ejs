@@ -8,35 +8,27 @@
         <meta name="robots" content="noindex">
 
         <%- include head.ejs %>
-        
-        <link rel="stylesheet" href="/files/css/codemirror.min.css?v=8" />
-        <link rel="stylesheet" href="/files/css/general.css?v=8" />
-        <link rel="stylesheet" href="/files/css/markdown.css?v=8" />
-        <link rel="stylesheet" href="/files/css/note.css?v=8" />
-        <link rel="stylesheet" href="/files/css/toastui-editor.custom.css?v=8" />
+
+        <%- stylesheets %>
     </head>
     <body>
         <div id="content">
             <div id="note-toolsBar">
-                <button id="returnButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#arrow_left"></use></svg></button>
+                <button id="returnButton"><svg><use xlink:href="<%- ciconsUrl %>#arrow_left"></use></svg></button>
         
                 <div id="separator"></div>
         
-                <!-- <a href="/edit/note/<%- noteId %>" id="edit" class="" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg></a> -->
-                <button id="edit" onclick="switchEdit()" title="Ctrl + E"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg></button>
+                <!-- <a href="/edit/note/<%- noteId %>" id="edit" class="" title="Ctrl + E"><svg><use xlink:href="<%- ciconsUrl %>#edit"></use></svg></a> -->
+                <button id="edit" onclick="switchEdit()" title="Ctrl + E"><svg><use xlink:href="<%- ciconsUrl %>#edit"></use></svg></button>
 
-                <div id="switchMode">
-                    <button id="normalMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#note"></use></svg></button>
-                    <button id="diapoMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#presentation"></use></svg></button>
-                    <button id="newsMode"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#newspaper"></use></svg></button>
-                </div>
+                <button id="buttonExport"><svg><use xlink:href="<%- ciconsUrl %>#export"></use></svg></button>
         
-                <button id="shareButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#share"></use></svg></button>
-                <button id="deleteButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#trash"></use></svg></button>
+                <button id="shareButton"><svg><use xlink:href="<%- ciconsUrl %>#share"></use></svg></button>
+                <button id="deleteButton"><svg><use xlink:href="<%- ciconsUrl %>#trash"></use></svg></button>
         
                 <button id="fullscreen">
-                    <svg id="fullscreen_enter"><use xlink:href="/files/cicons/cicons.svg?v=8#fullscreen"></use></svg>
-                    <svg id="fullscreen_exit"><use xlink:href="/files/cicons/cicons.svg?v=8#fullscreen_exit"></use></svg>
+                    <svg id="fullscreen_enter"><use xlink:href="<%- ciconsUrl %>#fullscreen"></use></svg>
+                    <svg id="fullscreen_exit"><use xlink:href="<%- ciconsUrl %>#fullscreen_exit"></use></svg>
                 </button>
             </div>
             <div id="modalShare">
@@ -45,7 +37,7 @@
                 </div>
                 <div id="addShare">
                     <input id="addShareInput"/>
-                    <button id="addShareSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=8#send"></use></svg></button>
+                    <button id="addShareSubmit"><svg><use xlink:href="<%- ciconsUrl %>#send"></use></svg></button>
                 </div>
             </div>
             <div id="modalDelete">
@@ -53,6 +45,27 @@
                 <div id="deleteAnswer">
                     <button id="deleteYes">Supprimer</button>
                     <button id="deleteNo">Annuler</button>
+                </div>
+            </div>
+            <div id="modalExport">
+                <p>Exporter</p>
+                <ul>
+                    <li onclick="showExportDiv('exportPdf', 'showExportPdf')" id="showExportPdf" class="showExportButton selected">PDF</li>
+                    <li onclick="showExportDiv('exportMd', 'showExportMd')" id="showExportMd" class="showExportButton">Markdown</li>
+                </ul>
+                
+                <div class="exportDivs" id="exportPdf">
+                    <label>Thème :</label>
+                    <select id="exportPdfSelectTheme" class="exportSelect">
+                        <option value="light" selected>Clair</option>
+                        <option value="dark">Sombre</option>
+                    </select>
+                    
+
+                    <a href="/note/<%- noteId %>/pdf?theme=light" class="exportButton" id="exportPdfButton">EXPORTER</a>
+                </div>
+                <div class="exportDivs" id="exportMd">
+                    <a href="/note/<%- noteId %>/md" class="exportButton" id="exportMdButton">EXPORTER</a>
                 </div>
             </div>
 
@@ -82,16 +95,16 @@
                     <p id="booksInputLabel-top"><%- booksInputLabel %></p>
                     <%- books %>
                     <a href="#" id="buttonShowNewBook" class="buttonNewBook"><svg>
-                            <use xlink:href="/files/cicons/cicons.svg?v=8#add"></use>
+                            <use xlink:href="<%- ciconsUrl %>#add"></use>
                         </svg></a>
                     <p id="booksInputLabel-right"><%- booksInputLabel %></p>
                     <br />
                     <a href="#" id="buttonHideNewBook" class="buttonNewBook"><svg>
-                            <use xlink:href="/files/cicons/cicons.svg?v=8#cross"></use>
+                            <use xlink:href="<%- ciconsUrl %>#cross"></use>
                         </svg></a>
                     <input id="newBookInput" type="text" name="newBookInput" spellcheck="false">
                     <a href="#" id="newBookSubmit"><svg>
-                            <use xlink:href="/files/cicons/cicons.svg?v=8#send"></use>
+                            <use xlink:href="<%- ciconsUrl %>#send"></use>
                         </svg></a>
         
                     <textarea id="noteInput" class="textInput" name="text" placeholder="<%- textHolder %>" spellcheck="false"><%- text %></textarea>
@@ -99,7 +112,7 @@
                     <div id="noteEditor"></div>
         
                     <div id="editor-loading">
-                        <svg><use xlink:href="/files/cicons/cicons.svg?v=8#loading"></use></svg>
+                        <svg><use xlink:href="<%- ciconsUrl %>#loading"></use></svg>
                     </div>
                 </form>
             </div>
@@ -112,10 +125,7 @@
         <p id="apiHost" style="display: none;"><%- apiHost %></p>
         <p id="errorTextCantSave" style="display: none;"><%- errorTextCantSave %></p>
         <p id="errorTextWaitWhileSaving" style="display: none;"><%- errorTextWaitWhileSaving %></p>
-        <script src="/files/js/toastui-editor-all.custom.js?v=8"></script>
-        <script src="/files/js/showdown.min.js?v=8"></script>
-        <script src="/files/js/fullscreen.js?v=8"></script>
-        <script src="/files/js/note.js?v=8"></script>
+        <%- jsFiles %>
         </body>
     </body>
 </html>

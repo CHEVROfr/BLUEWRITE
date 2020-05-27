@@ -13,11 +13,12 @@
     text-align: end;
     position: fixed;
     right: 0;
-    top: 50px;
+    top: 48px;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;
-    margin: 8px
+    margin: 8px;
+    z-index: 10000;
 }
 
 @media all and (max-width: 600px) {
@@ -126,11 +127,12 @@
     display: none;
     position: fixed;
     right: 0;
-    top: 50px;
+    top: 48px;
     background: #00b4c4;
     border-radius: 5px;
     padding: 8px;
     margin: 8px;
+    z-index: 10000;
 }
 
 #modalDelete p {
@@ -156,6 +158,95 @@
 
 #modalDelete div button:hover {
     background: #0d0d0d;
+}
+
+#modalExport {
+    display: none;
+    text-align: end;
+    position: fixed;
+    right: 0;
+    top: 48px;
+    background: #00b4c4;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+    z-index: 10000;
+}
+
+#modalExport > p {
+    margin-top: 3px;
+    margin-bottom: 0;
+    color: #0d0d0d;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#modalExport > ul {
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 0;
+    padding: 0;
+    margin-top: 5px;
+}
+
+#modalExport > ul > li {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#modalExport > ul > li.selected {
+    background: #003f45;
+    border-bottom: 2px solid #aaa;
+}
+
+.exportDivs {
+    background: #003f45;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    color: #fff;
+}
+
+.exportDivs label {
+    display: block;
+    font-size: 1.2rem;
+    margin: 10px;
+    color: #fff;
+}
+
+.exportSelect {
+    display: block;
+    margin: 10px;
+    position: relative;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 1rem;
+}
+
+#exportMd {
+    display: none;
+}
+
+.exportButton {
+    display: inline-block;
+    margin: 10px;
+    background: #fff;
+    color: #003f45;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 3px 7px;
+    border-radius: 5px;
 }
 
 #note-toolsBar {
@@ -194,20 +285,12 @@ button {
     padding: 0;
 }
 
-#edit, #shareButton, #deleteButton, #normalMode, #diapoMode, #newsMode {
+#edit, #shareButton, #deleteButton, #buttonExport {
     margin-right: 10px;
 }
 
 #edit {
     height: 3em;
-}
-
-#normalMode, #shareButton {
-    margin-left: 10px;
-}
-
-#normalMode svg {
-    fill: #5ff2ff;
 }
 
 #returnButton {
@@ -235,17 +318,6 @@ button {
     fill: #00b4c4;
 }
 
-#switchMode {
-    background: #003f45;
-    height: 3em;
-    align-items: center;
-    display: flex;
-}
-
-#switchMode svg:hover {
-    fill: #00b4c4;
-}
-
 /* ##################################################################
 #########################                ############################
 #########################      NOTE      ###########################
@@ -256,7 +328,7 @@ button {
 #noteTitle {
     margin-top: 10px;
     margin-bottom: 35px;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #ffffff;
 }
 

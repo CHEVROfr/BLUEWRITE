@@ -1,16 +1,15 @@
 /* NOTE TEXT */
 .noteText {
     margin-bottom: 50px;
+    margin-top: 50px;
 }
 
-.noteText h1, .noteText h2, .noteText h3, .noteText h4, .noteText h5, .noteText h6,
-.editor-preview h1, .editor-preview h2, .editor-preview h3, .editor-preview h4, .editor-preview h5, .editor-preview h6 {
+.noteText h1, .noteText h2, .noteText h3, .noteText h4, .noteText h5, .noteText h6 {
     color: #00b4c4;
     font-weight: bold;
 }
 
-.noteText p,
-.editor-preview p {
+.noteText p{
     font-size: 1.15rem;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -18,21 +17,18 @@
     word-wrap: break-word;
 }
 
-.noteText strong,
-.editor-preview strong {
+.noteText strong {
     word-wrap: break-word;
     color: #00b4c4;
 }
 
-.noteText em,
-.editor-preview em {
+.noteText em {
     word-wrap: break-word;
     font-style: italic;
     color: #003f45;
 }
 
-.noteText blockquote,
-.editor-preview blockquote {
+.noteText blockquote {
     margin-left: 2rem;
     border-left-style: solid;
     border-left-color: #00b4c4;
@@ -40,8 +36,7 @@
     padding-left: 7px;
 }
 
-.noteText pre,
-.editor-preview pre {
+.noteText pre {
     background-color: #2e2e2e;
     padding: 15px;
     border-radius: 3px;
@@ -51,14 +46,12 @@
     margin-left: 0;
 }
 
-.noteText pre code,
-.editor-preview pre code {
+.noteText pre code {
     color: #ffffff;
     font-family: "FiraCode";
 }
 
-.noteText p>code,
-.editor-preview p>code {
+.noteText p>code {
     background-color: #2e2e2e;
     padding: 1px;
     padding-right: 3px;
@@ -66,8 +59,7 @@
     border-radius: 3px;
     font-family: "FiraCode";
 }
-.noteText li>code,
-.editor-preview li>code {
+.noteText li>code {
     background-color: #2e2e2e;
     padding: 1px;
     padding-right: 3px;
@@ -76,51 +68,45 @@
     font-family: "FiraCode";
 }
 
-.noteText pre p,
-.editor-preview pre p {
+.noteText pre p {
     margin: 0;
 }
 
-.noteText a,
-.editor-preview a {
+.noteText a {
     text-decoration: underline;
-    font-weight: 600;
+    font-weight: bold;
     color: #ffffff;
+    cursor: pointer;
 }
 
-.noteText img,
-.editor-preview img {
+.noteText img {
     max-width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
     max-height: 15rem;
 }
 
-.noteText ul,
-.editor-preview ul {
+.noteText ul {
     padding-left: 20px;
 }
 
-.noteText li,
-.editor-preview li {
+.noteText li {
     color: #fff;
     font-size: 1.15rem;
 }
-.noteText li>p,
-.editor-preview li>p {
+.noteText li>p {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.noteText table,
-.editor-preview table {
+.noteText table {
     font-size: 1.15rem;
     border-collapse: separate;
     border-spacing: 0;
+    border: 1px solid #fff;
 }
 
-.noteText table td,
-.editor-preview table td {
+.noteText table td {
     color: #fff;
     border: 1px solid #fff;
     padding: 2px;
@@ -128,8 +114,7 @@
     padding-right: 5px;
 }
 
-.noteText table th,
-.editor-preview table th {
+.noteText table th {
     color: #fff;
     border: 1px solid #fff;
     padding: 2px;
@@ -138,19 +123,16 @@
 }
 
 /*          TASK LIST             */
-.noteText .task-list-item,
-.editor-preview .task-list-item {
+.noteText .task-list-item {
     position: relative;
 }
 
-.noteText .task-list-item input,
-.editor-preview .task-list-item input {
+.noteText .task-list-item input {
     margin-right: 25px !important;
     opacity: 0;
 }
 
-.noteText .task-list-item::before,
-.editor-preview .task-list-item::before {
+.noteText .task-list-item::before {
     content: "";
     display: inline-block;
     height: 16px;
@@ -160,8 +142,7 @@
     top: 3px;
 }
 
-.noteText .task-list-item::after,
-.editor-preview .task-list-item::after {
+.noteText .task-list-item::after {
     display: inline-block;
     height: 6px;
     width: 9px;

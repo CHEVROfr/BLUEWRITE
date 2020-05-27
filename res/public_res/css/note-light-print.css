@@ -1,0 +1,54 @@
+@media print {
+    body {
+        padding: 0 !important;
+        background: #fff;
+    }
+
+    #note-toolsBar {
+        display: none;
+    }
+
+    #content {
+        margin: 4rem !important;
+        margin-top: 0 !important
+    }
+
+    #noteTitle {
+        color: #003f45;
+        margin-top: 0;
+    }
+
+    .noteBook {
+        display: none;
+    }
+    #little_separator {
+        display: none;
+    }
+
+
+    .noteText p {
+        color: #0d0d0d;
+    }
+
+    .noteText a {
+        color: #0d0d0d;
+    }
+
+    .noteText li {
+        color: #0d0d0d;
+    }
+
+
+    .noteText table {
+        border-color: #0d0d0d;
+    }
+    .noteText table td {
+        color: #0d0d0d;
+        border-color: #0d0d0d;
+    }
+
+    .noteText table th {
+        color: #0d0d0d;
+        border-color: #0d0d0d;
+    }
+}

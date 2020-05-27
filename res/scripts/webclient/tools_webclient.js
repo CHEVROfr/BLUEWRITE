@@ -1,6 +1,6 @@
 var configs = require("../../configs/configs")
 var lang = require('../../scripts/universal/language_universal')
-var headers = require('headersfromextension')
+var mime_ext = require('mimetype-extension')
 var books_universal = require("../universal/books_universal")
 
 exports.getAppTitleRedirect = (sess) => {
@@ -15,7 +15,7 @@ exports.getAppTitleRedirect = (sess) => {
 exports.sendErrors = (errorNum, req, res, redirect="") => {
     switch(errorNum) {
         case "0000":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.render("error.ejs", {
                 appTitleRedirect: this.getAppTitleRedirect(req.session),
                 redirect: this.getAppTitleRedirect(req.session),
@@ -25,12 +25,12 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             })
             break;
         case "0001":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             req.session.lastPage = configs.get("domain") + req.originalUrl
             res.redirect("/login")
             break;
         case "0002":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.render("error.ejs", {
                 appTitleRedirect: this.getAppTitleRedirect(req.session),
                 redirect: this.getAppTitleRedirect(req.session),
@@ -40,7 +40,7 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             })
             break;
         case "0005":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.render("error.ejs", {
                 appTitleRedirect: this.getAppTitleRedirect(req.session),
                 redirect: this.getAppTitleRedirect(req.session),
@@ -50,7 +50,7 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             })
             break;
         case "1415":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.render("error.ejs", {
                 appTitleRedirect: this.getAppTitleRedirect(req.session),
                 redirect: this.getAppTitleRedirect(req.session),
@@ -60,12 +60,12 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             })
             break;
         case "301":
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.status(301)
             res.redirect(redirect)
             break;
         default:
-            res.setHeader('Content-Type', headers.get("html"))
+            res.setHeader("Content-Type", mime_ext.get("html"))
             res.status(404)
             res.render('error.ejs', { 
                 appTitleRedirect: this.getAppTitleRedirect(req.session),

@@ -1,4 +1,5 @@
 var tools_universal = require("../universal/tools_universal")
+var tools_webclient = require("../webclient/tools_webclient")
 var configs = require("../../configs/configs")
 
 exports.checkLogin = (req, res) => {
@@ -8,12 +9,11 @@ exports.checkLogin = (req, res) => {
                 if(responseCheck["status"] == "error") {
                     if(responseCheck["code"] == "0001") {
                         // Invalid Token
-                        this.sendErrors("0001", req, res)
+                        tools_webclient.sendErrors("0001", req, res)
                     }
                     else {
                         // Unknown Error
-                        console.log("on e la")
-                        this.sendErrors("0000", req, res)
+                        tools_webclient.sendErrors("0000", req, res)
                     }
                 }
                 else {
@@ -32,7 +32,7 @@ exports.checkLogin = (req, res) => {
                 }
             }).catch((err) => {
                 // Unknown Error
-                this.sendErrors("0000", req, res)
+                tools_webclient.sendErrors("0000", req, res)
             })
         }
         else if(req.session.connected != "true") {

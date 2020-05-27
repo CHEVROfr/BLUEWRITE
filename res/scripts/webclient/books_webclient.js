@@ -31,7 +31,7 @@ exports.get = (req, res) => {
                                 if(responseNotes["notes"] == "") {
                                     var response = Array()
                                     response['status'] = "sucess"
-                                    response["content"] = '<p id="noNotes">' + lang.get("no_note", sess.lang) + "</p>"
+                                    response["content"] = '<p id="noNotes">' + lang.get("no_note", req.session.lang) + "</p>"
                                     resolveP(response)
                                 }
                                 else {

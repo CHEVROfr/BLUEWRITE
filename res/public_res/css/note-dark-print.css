@@ -1,0 +1,36 @@
+@media print {
+    body {
+        padding: 0 !important;
+    }
+
+    #note-toolsBar {
+        display: none;
+    }
+
+    #content {
+        margin: 4rem !important;
+        margin-top: 0 !important
+    }
+
+    #noteTitle {
+        margin-top: 0;
+    }
+
+    .noteBook {
+        display: none;
+    }
+    #little_separator {
+        display: none;
+    }
+}
+
+/* @page {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+    size: A4 portrait;
+}
+@page:first {
+    margin-top: 0;
+    margin-bottom: 0;
+} */
