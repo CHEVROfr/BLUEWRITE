@@ -147,40 +147,6 @@ exports.get = (req, res, format) => {
                                             console.error(err)
                                             tools_webclient.sendErrors("0000", req, res)
                                         } else {
-                                            /*let options = {
-                                                "format": "A4",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid
-                                                "orientation": "portrait"
-                                            };
-                                            pdf.create(data, options).toFile("report.pdf", function (err, mPdf) {
-                                                if (err) {
-                                                    res.send(err);
-                                                } else {
-                                                    res.send(data);
-                                                }
-                                            });*/
-
-                                            /* conversion({
-                                                html: data,
-                                                allowLocalFilesAccess: true,
-                                                paperSize: {
-                                                    format: "A4",
-                                                    orientation: "portrait",
-                                                    margin: "0.5cm",
-                                                    headerHeight: "0",
-                                                    footerHeight: "0"
-                                                }
-                                            }, function (err, pdf) {
-
-                                                var output = fs.createWriteStream('sample.pdf');
-                                                console.log(pdf.logs);
-                                                // respond an http request.
-                                                pdf.stream.pipe(output);
-                                                res.send(data);
-                                            }); */
-
-                                            /* wkhtmltopdf(data, { pageSize: 'A4' })
-                                            .pipe(fs.createWriteStream('out.pdf')); */
-
                                             let headerTemplate = '<style>#header, #footer { padding: 0 !important; }</style><div style="height: 100vh; width: 100%; background: #fff; -webkit-print-color-adjust: exact; margin: 0;"></div>'
                                             let footerTemplate = '<style>#header, #footer { padding: 0 !important; }</style><div style="height: 100vh; width: 100%; background: #fff; -webkit-print-color-adjust: exact; margin: 0;"></div>'
 
@@ -189,7 +155,7 @@ exports.get = (req, res, format) => {
                                                 footerTemplate = '<style>#header, #footer { padding: 0 !important; }</style><div style="height: 100vh; width: 100%; background: #0d0d0d; -webkit-print-color-adjust: exact; margin: 0;"></div>'
                                             }
 
-                                            puppeteer.launch({headless: true}).then((browser) => {
+                                            puppeteer.launch({headless: true, args: ['--no-sandbox']}).then((browser) => {
                                                 browser.newPage().then((page) => {
                                                     page.setContent(data, {waitUntil: "networkidle2"}).then(() => {
                                                         page.pdf({
