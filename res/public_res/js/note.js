@@ -1,3 +1,6 @@
+var showdown  = require('showdown')
+var showdownKatex  = require('showdown-katex')
+
 let token = document.getElementById('token').innerHTML
 let nid = document.getElementById('nid').innerHTML
 let isOwner = document.getElementById('isOwner').innerHTML
@@ -197,7 +200,7 @@ addShare = () => {
                         if(isOwner == "true") {
                             shareListCanEdit.setAttribute("onclick", 'setCanEdit(this, \'' + json["uid"] + '\')')
                         }
-                        shareListCanEdit.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg>'
+                        shareListCanEdit.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#edit"></use></svg>'
                         shareListElement.appendChild(shareListCanEdit)
                     }
                     else {
@@ -207,7 +210,7 @@ addShare = () => {
                         if(isOwner == "true") {
                             shareListCanEdit.setAttribute("onclick", 'setCanEdit(this, \'' + json["uid"] + '\')')
                         }
-                        shareListCanEdit.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#eye"></use></svg>'
+                        shareListCanEdit.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#eye"></use></svg>'
                         shareListElement.appendChild(shareListCanEdit)
                     }
 
@@ -218,7 +221,7 @@ addShare = () => {
                     if(isOwner == "true") {
                         let shareListRemove = document.createElement("button")
                         shareListRemove.className = "shareListRemove"
-                        shareListRemove.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#trash"></use></svg>'
+                        shareListRemove.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#trash"></use></svg>'
                         shareListRemove.setAttribute("onclick", 'removeShareWith(this, \'' + json["uid"] + '\')')
                         shareListElement.appendChild(shareListRemove)
                     }
@@ -265,10 +268,10 @@ setCanEdit = (obj, uid) => {
             if(json["status"] == "sucess") {
                 obj.setAttribute("canedit", json["canEdit"])
                 if(json["canEdit"]) {
-                    obj.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#edit"></use></svg>'
+                    obj.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#edit"></use></svg>'
                 }
                 else {
-                    obj.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#eye"></use></svg>'
+                    obj.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#eye"></use></svg>'
                 }
             }
         })
@@ -399,7 +402,18 @@ createEditor = () => {
     setNewMarkdown = () => {
         var converter = new showdown.Converter({
             tasklists: true,
-            tables: true
+            tables: true,
+            extensions: [
+                showdownKatex({
+                  throwOnError: false,
+                  displayMode: false,
+                  errorColor: '#ff0000',
+                  delimiters: [
+                    { left: "$", right: "$", display: false },
+                    { left: '~', right: '~', display: false, asciimath: true },
+                  ]
+                }),
+            ]
         }),
         text = editor.getMarkdown()
         document.getElementById("noteText").innerHTML = converter.makeHtml(text)
@@ -432,7 +446,7 @@ saveEdit = () => {
                     window.location.href = "/notes"
                 }
                 else {
-                    returnButton.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=8#arrow_left"></use></svg>'
+                    returnButton.innerHTML = '<svg><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_left"></use></svg>'
                     returnButton.onclick = () => {
                         window.location.href = "/notes"
                     }
@@ -443,7 +457,7 @@ saveEdit = () => {
                 returnButton.onclick = () => {
                     showErrorModal(errorTextCantSave)
                 }
-                returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=8#save"></use></svg>'
+                returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=9#save"></use></svg>'
             }
         })
     }).catch(() => {
@@ -451,12 +465,12 @@ saveEdit = () => {
         returnButton.onclick = () => {
             showErrorModal(errorTextCantSave)
         }
-        returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=8#save"></use></svg>'
+        returnButton.innerHTML = '<svg style="fill: #ff0000;"><use xlink:href="/files/cicons/cicons.svg?v=9#save"></use></svg>'
     })
 }
 
 iconContentUnsaved = () => {
-    returnButton.innerHTML = '<svg class="loading"><use xlink:href="/files/cicons/cicons.svg?v=8#loading"></use></svg>'
+    returnButton.innerHTML = '<svg class="loading"><use xlink:href="/files/cicons/cicons.svg?v=9#loading"></use></svg>'
     returnButton.onclick = () => {
         showErrorModal(errorTextWaitWhileSaving)
     }

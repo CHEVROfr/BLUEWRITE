@@ -19,6 +19,7 @@
         "mongoose": "^5.9.16",
         "node-fetch": "^2.3.0",
         "puppeteer": "^3.1.0",
-        "showdown": "^1.9.1"
+        "showdown": "^1.9.1",
+        "showdown-katex": "^0.8.0"
     }
 }

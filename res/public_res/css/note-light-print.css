@@ -51,4 +51,8 @@
         color: #0d0d0d;
         border-color: #0d0d0d;
     }
+
+    .noteText .katex-html {
+        color: #0d0d0d;
+    }
 }
