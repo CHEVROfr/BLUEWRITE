@@ -19,51 +19,41 @@ exports.postShare = (req, res) => {
         let jsonRes = {}
 
         tools_universal.checkUserToken(req.body.token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
-                    jsonRes = {
-                        status: "error",
-                        code: "0001",
-                        err: responseCheck["err"]
-                    }
-                    res.send(jsonRes)
+            share_universal.shareNote(responseCheck["uid"], req.body.nid, req.body.shareWith, req.body.canEdit).then((responseShare) => {
+                jsonRes = {
+                    status: "sucess",
+                    canEdit: responseShare["canEdit"],
+                    alreadyAdded: responseShare["alreadyAdded"],
+                    uid: responseShare["uid"]
                 }
-                else {
-                    // Unknown Error
-                    jsonRes = {
-                        status: "error",
-                        code: "0000",
-                        err: responseCheck["err"]
-                    }
-                    res.send(jsonRes)
+                res.send(jsonRes)
+            }).catch((err) => {
+                jsonRes = {
+                    status: "error",
+                    code: err["code"],
+                    err: err["err"]
                 }
+                res.send(jsonRes)
+            })
+        }).catch((err) => {
+            if(err["code"] == "0001") {
+                // Invalid Token
+                jsonRes = {
+                    status: "error",
+                    code: "0001",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
             else {
-                share_universal.shareNote(responseCheck["uid"], req.body.nid, req.body.shareWith, req.body.canEdit).then((responseShare) => {
-                    jsonRes = {
-                        status: "sucess",
-                        canEdit: responseShare["canEdit"],
-                        alreadyAdded: responseShare["alreadyAdded"],
-                        uid: responseShare["uid"]
-                    }
-                    res.send(jsonRes)
-                }).catch((err) => {
-                    jsonRes = {
-                        status: "error",
-                        code: err["code"],
-                        err: err["err"]
-                    }
-                    res.send(jsonRes)
-                })
+                // Unknown Error
+                jsonRes = {
+                    status: "error",
+                    code: "0000",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
-        }).catch((err) => {
-            jsonRes = {
-                status: "error",
-                code: "0000",
-                err: "shareApiPost : " + err
-            }
-            res.send(jsonRes)
         })
     })
 }

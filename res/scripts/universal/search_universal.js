@@ -20,7 +20,7 @@ exports.search = (uid, query) => {
                 })
             }
 
-            if(resultSearch.length == 0) { // if no notes, return empty string
+            if(!resultSearch || resultSearch.length == 0) { // if no notes, return empty string
                 resolveP({
                     status: "sucess",
                     notes: ""
@@ -68,76 +68,5 @@ exports.search = (uid, query) => {
                 })
             }
         })
-
-        /* db.Notes.findOne({nid: nid, uid: uid}, "nid shareWith", (err, resultNote) => {
-            let shareWith = {}
-            if(err) {
-                resolveP({
-                    status: "error",
-                    code: "0000",
-                    err: "deshareNote : " + err
-                })
-            }
-            else if(!resultNote) {
-                resolveP({
-                    status: "error",
-                    code: "0002",
-                    err: "The note does not exist or you do not have the right to read it"
-                })
-            }
-            else if(resultNote) {
-                shareWith = resultNote.shareWith
-                new Promise((resolve, reject) => {
-                    tools_universal.getUidOfPseudo(deshareWith).then((responseUid) => {
-                        if(responseUid) {
-                            resolve(responseUid)
-                        }
-                        else {
-                            tools_universal.getPseudoOfUid(deshareWith).then((responsePseudo) => {
-                                if(responsePseudo) {
-                                    resolve(deshareWith)
-                                }
-                                else {
-                                    resolveP({
-                                        status: "error",
-                                        code: "0004",
-                                        err: "the user you want to deshare your note with does not exist"
-                                    })
-                                }
-                            }).catch((err) => {
-                                resolveP({
-                                    status: "error",
-                                    code: "0000",
-                                    err: "deshareNote : " + err
-                                })
-                            })
-                        }
-                    }).catch((err) => {
-                        resolveP({
-                            status: "error",
-                            code: "0000",
-                            err: "deshareNote : " + err
-                        })
-                    })
-                }).then((deshareWithUid) =>{
-                    for(i = 0; i < shareWith.length; i++) {
-                        if ( shareWith[i].uid == deshareWithUid) {
-                            shareWith.splice(i, 1); 
-                        }
-                    }
-                    db.Notes.updateOne({nid: nid}, {shareWith: shareWith}, (err, result) => {
-                        resolveP({
-                            status: "sucess"
-                        })
-                    })
-                }).catch((err) => {
-                    resolveP({
-                        status: "error",
-                        code: "0000",
-                        err: "deshareNote : " + err
-                    })
-                })
-            }
-        }) */
     })
 }

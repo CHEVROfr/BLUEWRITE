@@ -9,37 +9,23 @@ var markdown_webclient = require("../webclient/markdown_webclient")
 exports.get = (req, res) => {
     return new Promise((resolveP, rejectP) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
-                    tools_webclient.sendErrors("0001", req, res)
+            delete_note_universal.deleteNote(req.params.nid).then((responseDelete) => {
+                if(responseDelete["status"] == "sucess") {
+                    res.redirect("/notes")
                 }
                 else {
                     // Unknown Error
                     console.error(responseCheck["err"])
                     tools_webclient.sendErrors("0000", req, res)
                 }
-            }
-            else {
-                delete_note_universal.deleteNote(req.params.nid).then((responseDelete) => {
-                    if(responseDelete["status"] == "sucess") {
-                        res.redirect("/notes")
-                    }
-                    else {
-                        // Unknown Error
-                        console.error(responseCheck["err"])
-                        tools_webclient.sendErrors("0000", req, res)
-                    }
-                }).catch((err) => {
-                    // Unknown Error
-                    console.error(responseCheck["err"])
-                    tools_webclient.sendErrors("0000", req, res)
-                })
-            }
+            }).catch((err) => {
+                // Unknown Error
+                console.error(responseCheck["err"])
+                tools_webclient.sendErrors("0000", req, res)
+            })
         }).catch((err) => {
-            // Unknown Error
-            console.error(err)
-            tools_webclient.sendErrors("0000", req, res)
+            // Invalid Token
+            tools_webclient.sendErrors("0001", req, res)
         })
     })
 }

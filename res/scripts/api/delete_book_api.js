@@ -24,13 +24,12 @@ exports.post = (req, res) => {
         let jsonRes = {}
 
         tools_universal.checkUserToken(req.body.token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
+            delete_book_universal.deleteBook(responseCheck["uid"], req.body.bid, req.body.all).then((responseDelete) => {
+                if(responseDelete["status"] == "sucess") {
+                    // Sucess
                     jsonRes = {
-                        status: "error",
-                        code: "0001",
-                        err: responseCheck["err"]
+                        status: "sucess",
+                        bid: responseDelete["bid"],
                     }
                     res.send(jsonRes)
                 }
@@ -38,40 +37,31 @@ exports.post = (req, res) => {
                     // Unknown Error
                     jsonRes = {
                         status: "error",
-                        code: "0000",
-                        err: responseCheck["err"]
+                        code: responseDelete["code"],
+                        err: responseDelete["err"]
                     }
                     res.send(jsonRes)
                 }
+            })
+        }).catch((err) => {
+            if(err["code"] == "0001") {
+                // Invalid Token
+                jsonRes = {
+                    status: "error",
+                    code: "0001",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
             else {
-                delete_book_universal.deleteBook(responseCheck["uid"], req.body.bid, req.body.all).then((responseDelete) => {
-                    if(responseDelete["status"] == "sucess") {
-                        // Sucess
-                        jsonRes = {
-                            status: "sucess",
-                            bid: responseDelete["bid"],
-                        }
-                        res.send(jsonRes)
-                    }
-                    else {
-                        // Unknown Error
-                        jsonRes = {
-                            status: "error",
-                            code: responseDelete["code"],
-                            err: responseDelete["err"]
-                        }
-                        res.send(jsonRes)
-                    }
-                })
+                // Unknown Error
+                jsonRes = {
+                    status: "error",
+                    code: "0000",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
-        }).catch((err) => {
-            jsonRes = {
-                status: "error",
-                code: "0000",
-                err: "deleteBookApiPost : " + err
-            }
-            res.send(jsonRes)
         })
     })
 }

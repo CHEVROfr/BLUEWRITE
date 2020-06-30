@@ -9,35 +9,21 @@ var markdown_webclient = require("../webclient/markdown_webclient")
 exports.get = (req, res) => {
     return new Promise((resolveP, rejectP) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
-                    tools_webclient.sendErrors("0001", req, res)
-                }
-                else {
-                    // Unknown Error
-                    console.error(responseCheck["err"])
-                    tools_webclient.sendErrors("0000", req, res)
-                }
-            }
-            else {
-                add_note_universal.addNote(
-                    responseCheck["uid"], 
-                    lang.get("nameless", req.session.lang), 
-                    lang.get("start_writing_something_incredible", 
-                    req.session.lang), 
-                    ""
-                ).then((responseAdd) => {
-                    res.redirect("/note/" + responseAdd["nid"] + "#edit")
-                }).catch((err) => {
-                    console.error(err)
-                    tools_webclient.sendErrors("0000", req, res)
-                })
-            }
+            add_note_universal.addNote(
+                responseCheck["uid"], 
+                lang.get("nameless", req.session.lang), 
+                lang.get("start_writing_something_incredible", 
+                req.session.lang), 
+                ""
+            ).then((responseAdd) => {
+                res.redirect("/note/" + responseAdd["nid"] + "#edit")
+            }).catch((err) => {
+                console.error(err)
+                tools_webclient.sendErrors("0000", req, res)
+            })
         }).catch((err) => {
-            // Unknown Error
-            console.error(err)
-            tools_webclient.sendErrors("0000", req, res)
+            // Invalid Token
+            tools_webclient.sendErrors("0001", req, res)
         })
     })
 }
@@ -45,45 +31,31 @@ exports.get = (req, res) => {
 exports.post = (req, res) => {
     return new Promise((resolveP, rejectP) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
-                    tools_webclient.sendErrors("0001", req, res)
+            add_note_universal.addNote(responseCheck["uid"], req.body.title, req.body.text, req.body.books).then((responseAdd) => {
+                if(responseAdd["status"] == "sucess") {
+                    res.redirect("/note/" + responseAdd['nid'])
                 }
                 else {
-                    // Unknown Error
-                    console.error(responseCheck["err"])
-                    tools_webclient.sendErrors("0000", req, res)
-                }
-            }
-            else {
-                add_note_universal.addNote(responseCheck["uid"], req.body.title, req.body.text, req.body.books).then((responseAdd) => {
-                    if(responseAdd["status"] == "sucess") {
-                        res.redirect("/note/" + responseAdd['nid'])
+                    if(responseAdd["code"] == "0002") {
+                        tools_webclient.sendErrors("0002", req, res)
+                    }
+                    else if(responseAdd["code"] == "0006") {
+                        res.redirect("/notes")
                     }
                     else {
-                        if(responseAdd["code"] == "0002") {
-                            tools_webclient.sendErrors("0002", req, res)
-                        }
-                        else if(responseAdd["code"] == "0006") {
-                            res.redirect("/notes")
-                        }
-                        else {
-                            // Unknown Error
-                            console.error(responseAdd["err"])
-                            tools_webclient.sendErrors("0000", req, res)
-                        }
+                        // Unknown Error
+                        console.error(responseAdd["err"])
+                        tools_webclient.sendErrors("0000", req, res)
                     }
-                }).catch((err) => {
-                    // Unknown Error
-                    console.error(err)
-                    tools_webclient.sendErrors("0000", req, res)
-                })
-            }
+                }
+            }).catch((err) => {
+                // Unknown Error
+                console.error(err)
+                tools_webclient.sendErrors("0000", req, res)
+            })
         }).catch((err) => {
-            // Unknown Error
-            console.error(err)
-            tools_webclient.sendErrors("0000", req, res)
+            // Invalid Token
+            tools_webclient.sendErrors("0001", req, res)
         })
     })
 }

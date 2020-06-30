@@ -82,9 +82,7 @@ exports.editNote = (uid, nid, title, text, book) => {
                                             code: "0000",
                                             err: "editNote : " + err
                                         })
-                                    } 
-
-                                    console.log(genId)
+                                    }
                 
                                     resolve(genId)
                                 })

@@ -4,6 +4,7 @@ var showdownKatex  = require('showdown-katex')
 exports.converter = new showdown.Converter({
     tasklists: true,
     tables: true,
+    openLinksInNewWindow: true,
     extensions: [
         showdownKatex({
           throwOnError: false,

@@ -19,13 +19,13 @@ exports.post = (req, res) => {
         let jsonRes = {}
 
         tools_universal.checkUserToken(req.body.token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
+            notes_universal.getNotes(responseCheck["uid"]).then((responseNotes) => {
+                if(responseNotes["status"] == "sucess") {
+                    // Sucess
                     jsonRes = {
-                        status: "error",
-                        code: "0001",
-                        err: responseCheck["err"]
+                        status: "sucess",
+                        notes: responseNotes["notes"],
+                        date: responseNotes["date"]
                     }
                     res.send(jsonRes)
                 }
@@ -34,40 +34,30 @@ exports.post = (req, res) => {
                     jsonRes = {
                         status: "error",
                         code: "0000",
-                        err: responseCheck["err"]
+                        err: responseNotes["err"]
                     }
                     res.send(jsonRes)
                 }
+            })
+        }).catch((err) => {
+            if(err["code"] == "0001") {
+                // Invalid Token
+                jsonRes = {
+                    status: "error",
+                    code: "0001",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
             else {
-                notes_universal.getNotes(responseCheck["uid"]).then((responseNotes) => {
-                    if(responseNotes["status"] == "sucess") {
-                        // Sucess
-                        jsonRes = {
-                            status: "sucess",
-                            notes: responseNotes["notes"],
-                            date: responseNotes["date"]
-                        }
-                        res.send(jsonRes)
-                    }
-                    else {
-                        // Unknown Error
-                        jsonRes = {
-                            status: "error",
-                            code: "0000",
-                            err: responseNotes["err"]
-                        }
-                        res.send(jsonRes)
-                    }
-                })
+                // Unknown Error
+                jsonRes = {
+                    status: "error",
+                    code: "0000",
+                    err: err["err"]
+                }
+                res.send(jsonRes)
             }
-        }).catch((err) => {
-            jsonRes = {
-                status: "error",
-                code: "0000",
-                err: "notesApiPost : " + err
-            }
-            res.send(jsonRes)
         })
     })
 }

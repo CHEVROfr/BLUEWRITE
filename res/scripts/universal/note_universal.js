@@ -41,7 +41,7 @@ exports.getNote = (uid, nid) => {
             })
         }).then((noteDatas) => {
             db.Books.findOne({bid: noteDatas["book"]}, "bid uid name", (err, resultBook) => {
-                if(err) { 
+                if(err) {
                     resolveP({
                         status: "error",
                         code: "0000",

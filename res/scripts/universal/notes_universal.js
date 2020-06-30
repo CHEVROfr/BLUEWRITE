@@ -108,10 +108,7 @@ exports.getNotes = (uid) => {
 
                 Promise.all(promises).then((responses) => {
                     responses.map(response => {
-                        if(typeof response == "string") {
-                            console.log(response)
-                        }
-                        else {
+                        if(typeof response != "string") {
                             notes.push(response)
                         }
                     })

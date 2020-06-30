@@ -26,8 +26,7 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             break;
         case "0001":
             res.setHeader("Content-Type", mime_ext.get("html"))
-            req.session.lastPage = configs.get("domain") + req.originalUrl
-            res.redirect("/login")
+            res.redirect("/login?r=" + configs.get("domain") + req.originalUrl)
             break;
         case "0002":
             res.setHeader("Content-Type", mime_ext.get("html"))

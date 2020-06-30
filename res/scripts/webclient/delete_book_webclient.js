@@ -9,46 +9,32 @@ var markdown_webclient = require("../webclient/markdown_webclient")
 exports.get = (req, res) => {
     return new Promise((resolveP, rejectP) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            if(responseCheck["status"] == "error") {
-                if(responseCheck["code"] == "0001") {
-                    // Invalid Token
-                    tools_webclient.sendErrors("0001", req, res)
+            delNotes = req.query.all
+            if(delNotes != "true") {
+                delNotes = "false"
+            }
+
+            delete_book_universal.deleteBook(responseCheck["uid"], req.params.bid, delNotes).then((responseDelete) => {
+                if(responseDelete["status"] == "sucess") {
+                    res.redirect("/books")
                 }
                 else {
-                    // Unknown Error
-                    console.error(responseCheck["err"])
-                    tools_webclient.sendErrors("0000", req, res)
-                }
-            }
-            else {
-                delNotes = req.query.all
-                if(delNotes != "true") {
-                    delNotes = "false"
-                }
-
-                delete_book_universal.deleteBook(responseCheck["uid"], req.params.bid, delNotes).then((responseDelete) => {
-                    if(responseDelete["status"] == "sucess") {
-                        res.redirect("/books")
+                    if(responseDelete["code"] == "0005") {
+                        tools_webclient.sendErrors("0005", req, res)
                     }
                     else {
-                        if(responseDelete["code"] == "0005") {
-                            tools_webclient.sendErrors("0005", req, res)
-                        }
-                        else {
-                            console.error(responseDelete["err"])
-                            tools_webclient.sendErrors("0000", req, res)
-                        }
+                        console.error(responseDelete["err"])
+                        tools_webclient.sendErrors("0000", req, res)
                     }
-                }).catch((err) => {
-                    // Unknown Error
-                    console.error(err)
-                    tools_webclient.sendErrors("0000", req, res)
-                })
-            }
+                }
+            }).catch((err) => {
+                // Unknown Error
+                console.error(err)
+                tools_webclient.sendErrors("0000", req, res)
+            })
         }).catch((err) => {
-            // Unknown Error
-            console.error(err)
-            tools_webclient.sendErrors("0000", req, res)
+            // Invalid Token
+            tools_webclient.sendErrors("0001", req, res)
         })
     })
 }

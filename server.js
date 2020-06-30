@@ -99,8 +99,8 @@ app.post("/api/delete/book", (req, res) => require("./res/scripts/api/delete_boo
 
 app.get("/", (req, res) => require("./res/scripts/webclient/index_webclient").get(req, res))
 
-app.get("/login", (req, res) => require("./res/scripts/webclient/login_webclient").redirectLogin(req, res))
-app.get("/login/check", (req, res) => require("./res/scripts/webclient/login_webclient").checkLogin(req, res))
+app.get("/login", (req, res) => require("./res/scripts/webclient/login_webclient").get(req, res))
+//app.get("/login/check", (req, res) => require("./res/scripts/webclient/login_webclient").checkLogin(req, res))
 
 app.get("/notes", (req, res) => require("./res/scripts/webclient/notes_webclient").get(req, res))
 app.get("/books", (req, res) => require("./res/scripts/webclient/books_webclient").get(req, res))

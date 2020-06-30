@@ -148,12 +148,10 @@ search = (query) => {
                 }
             }).catch((err) => {
                 console.error(err)
-                console.log(response)
                 content.innerHTML = '<p id="searchMessage">Problem</p><br />' + baseContent
             }) 
         }).catch((err) => {
             console.error(err)
-            console.log(response)
             content.innerHTML = '<p id="searchMessage">Problem</p><br />' + baseContent
         }) 
     }    

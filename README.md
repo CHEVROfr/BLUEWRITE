@@ -42,6 +42,7 @@ If you run with Docker, port have to be 80.
     CESTOLIV - @cestoliv
 
 See also the list of contributors who participated in this project.
-License
+
+# License
 
 This project is licensed under the GPLv3 - see the LICENSE.md file for details

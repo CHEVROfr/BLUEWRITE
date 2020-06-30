@@ -132,7 +132,7 @@ exports.checkUserToken = (token) => {
                             code: "0001",
                             err: "checkUserToken : Invalid user token"
                         }
-                        resolveP(toResolve)
+                        reject(toResolve)
                     }
                     else {
                         toResolve = {
@@ -140,7 +140,7 @@ exports.checkUserToken = (token) => {
                             code: "0000",
                             err: "checkUserToken : Unknown error"
                         }
-                        resolveP(toResolve)
+                        reject(toResolve)
                     }
                 }
                 else {
@@ -157,16 +157,15 @@ exports.checkUserToken = (token) => {
                     code: "0000",
                     err: "checkUserToken : Unknown error"
                 }
-                resolveP(toResolve)
+                reject(toResolve)
             })
         }).catch((err) => {
-            console.error(err)
             toResolve = {
                 status: "error",
                 code: "0000",
                 err: "checkUserToken : Unknown error"
             }
-            resolveP(toResolve)
+            reject(toResolve)
         })
     })
 }
