@@ -41,14 +41,6 @@ getFr = (id) => {
             return "Mes notes"
         case "characters":
             return "caractères"
-        case "synchronized_notes_application":
-            return "Application de notes synchronisées"
-        case "your_notes_on_all_your_devices":
-            return "Retrouvez vos notes sur tous vos appareils"
-        case "minimalist_interface_markdown_rendering":
-            return "Interface minimaliste et rendu Markdown"
-        case "share_notes_with_friends":
-            return "Partagez vos notes et laissez vos amis les éditer"
         case "choose_a_book":
             return "Choisir un livre de notes"
         case "no_one":
@@ -67,5 +59,23 @@ getFr = (id) => {
             return "Veuillez patienter pendant la sauvegarde de votre note"
         case "cant_autosave_note":
             return "Impossible d'effectuer une sauvegarde de votre note. Vérifiez que vous êtes connecté à internet."
+        case "pros":
+            return "Avantages"
+        case "synchronized_notes_application":
+            return "Application de notes synchronisées"
+        case "your_notes_on_all_your_devices":
+            return "Retrouvez vos notes sur tous vos appareils"
+        case "wysiwg_markdown_editor":
+            return "Éditeur WYSIWYG markdown"
+        case "share_notes_with_friends":
+            return "Partagez vos notes et laissez vos amis les éditer"
+        case "support_for_latex_mathematical_formulas":
+            return "Support des formules mathématique LATEX"
+        case "public_or_private_notes":
+            return "Notes publiques ou privées"
+        case "about":
+            return "À propos"
+        case "about_text":
+            return "BLUEWRITE est un logiciel OpenSource, fourni sous la licence GPLv3. Vous pouvez (et nous vous l'y encourageons) auto-héberger BLUEWRITE. Vous trouverez les informations sur notre repos !"
     }
 }

@@ -11,17 +11,61 @@
     <link rel="stylesheet" href="/files/css/general.css?v=9" />
     <link rel="stylesheet" href="/files/css/index.css?v=9" />
   </head>
-  <body>
-    <div id="toolsBar">
-        <a href="/" id="appTitle"><h1>bluewrite</h1></a>
-        <p id="appTitleBy">, by</p>
-        <a href="https://chevro.fr" id="appTitleChevroLink"><h2 id="appTitleChevro">CHEVRO</h2></a>
-        <div id="separator"></div>
-        <%- connectOrSeeNotes %>
-    </div>
-    
+  <body>    
     <div id="content">
-      <%- content %>
+        <div id="centerTop">
+            <div id="top">
+                <img src="/files/imgs/icon_square_blue.svg" alt="bluewrite logo" />    
+                <span>
+                    <h1 id="title">bluewrite</h1>
+                    <h2 id="desc"><%- desc %></h2>
+                    <a id="go" href="/notes">GO -></a>
+                </span>
+            </div>
+        </div>
+
+        <div class="downBox"><span class="downBar"></span><svg class="downIcon"><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_bottom"></use></svg><span class="downBar"></span></div>
+        
+        <div id="platforms">
+            <h2 class="pros-title"><%- platforms_title %></h2>
+            <div class="platforms-links">
+                <a target="_blank" href="/notes">
+                    <img src="/files/imgs/on-the-web.svg" alt="on the web badge" />
+                </a>
+                <a target="_blank" href="https://addons.mozilla.org/fr/firefox/addon/bluewrite">
+                    <img src="/files/imgs/get-it-on-firefox.svg" alt="firefox extension badge" />
+                </a>
+            </div>
+        </div>
+        
+        <div class="downBox"><span class="downBar"></span><svg class="downIcon"><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_bottom"></use></svg><span class="downBar"></span></div>
+        
+        <div id="pros">
+            <h2 class="pros-title"><%- pros_title %></h2>
+            <ul>
+                <li><%- pros1 %></li>
+                <li><%- pros2 %></li>
+                <li><%- pros3 %></li>
+                <li><%- pros4 %></li>
+            </ul>
+        </div>
+
+        <div class="downBox"><span class="downBar"></span><svg class="downIcon"><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_bottom"></use></svg><span class="downBar"></span></div>
+
+        <div id="about">
+            <h2 class="about-title"><%- about_title %></h2>
+            <p><%- about_text %></p>
+            <a target="_blank" href="https://github.com/CHEVROfr/BLUEWRITE">
+                <img src="/files/imgs/available-on-github.svg" alt="github badge" />
+            </a>
+        </div>
+
+        <div id="footer">
+            <p>Made with</p>
+            <svg><use xlink:href="/files/cicons/cicons.svg?v=9#hearth"></use></svg>
+            <p>by</p>
+            <a target="_blank" href="https://cestoliv.com">@cestoliv</a>
+        </div>
     </div>
   </body>
 </html>
