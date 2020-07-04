@@ -63,7 +63,9 @@ exports.get = (req, res) => {
                             deleteOnlyBookStr: lang.get("delete_only_book", req.session.lang), 
                             deleteBookAndNotesStr: lang.get("delete_book_and_notes", req.session.lang),
                             deleteStr: lang.get("delete", req.session.lang),
-                            book_panel_title: lang.get("books", req.session.lang).toUpperCase()
+                            book_panel_title: lang.get("books", req.session.lang).toUpperCase(),
+                            textPlaceholderStr: lang.get("start_writing_something_incredible", req.session.lang),
+                            titlePlaceholderStr: lang.get("nameless", req.session.lang)
                         })
                     }).catch((err) => {
                         // Unknown Error

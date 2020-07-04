@@ -10,14 +10,14 @@ ERRORS :
 
 exports.editNote = (uid, nid, title, text, book) => {
     return new Promise((resolveP, rejectP) => {
-        if(!title || title == "" || !title.trim()) {
+        /* if(!title || title == "" || !title.trim()) {
             title = lang.get("nameless")
         }
 
         if(!text || text == "" || !text.trim()) {
             text = lang.get("start_writing_something_incredible")
         }
-
+ */
         db.Notes.findOne({$and: 
             [
                 {nid: nid}, 

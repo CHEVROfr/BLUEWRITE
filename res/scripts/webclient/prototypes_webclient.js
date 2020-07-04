@@ -10,7 +10,15 @@ exports.note = function(noteObj, sess) {
     this.book = noteObj['book']
     this.pseudo = noteObj['pseudo']
     this.title = noteObj['title']
+    if(!this.title || this.title == "" || !this.title.trim()) {
+        this.title = lang.get("nameless", sess.lang)
+    }
+
     this.text = noteObj['text']
+    if(!this.text || this.text == "" || !this.text.trim()) {
+        this.text = lang.get("start_writing_something_incredible", sess.lang)
+    }
+
     this.creationDate = noteObj['creationDate']
     this.lastUpdateDate = noteObj['lastUpdateDate']
     this.updateDateString = noteObj['updateDateString']

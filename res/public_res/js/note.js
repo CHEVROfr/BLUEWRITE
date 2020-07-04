@@ -406,6 +406,7 @@ createEditor = () => {
         })
     }
 
+    console.log(editor)
     setNewMarkdown = () => {
         var converter = new showdown.Converter({
             tasklists: true,
@@ -630,6 +631,12 @@ let editShowed = false
 switchEdit = () => {
     if(editShowed) {
         setNewMarkdown()
+        if(noteTitle.innerText == "") {
+            noteTitle.innerText = titleInput.placeholder
+        }
+        if(noteText.innerText == "") {
+            noteText.innerHTML = "<p>" + noteInput.placeholder + "</p>"
+        }
         document.getElementById('edit-content').style.display = 'none'
         document.getElementById('note-content').style.display = 'block'
         editShowed = false
@@ -644,4 +651,11 @@ switchEdit = () => {
 
 if(window.location.hash == "#edit") {
     switchEdit()
+}
+
+if(noteTitle.innerText == "") {
+    noteTitle.innerText = titleInput.placeholder
+}
+if(noteText.innerText == "") {
+    noteText.innerHTML = "<p>" + noteInput.placeholder + "</p>"
 }

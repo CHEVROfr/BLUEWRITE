@@ -11,9 +11,8 @@ exports.get = (req, res) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
             add_note_universal.addNote(
                 responseCheck["uid"], 
-                lang.get("nameless", req.session.lang), 
-                lang.get("start_writing_something_incredible", 
-                req.session.lang), 
+                "", 
+                "", 
                 ""
             ).then((responseAdd) => {
                 res.redirect("/note/" + responseAdd["nid"] + "#edit")

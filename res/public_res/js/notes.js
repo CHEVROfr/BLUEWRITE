@@ -14,6 +14,8 @@ let resultsStr = document.getElementById('resultsStr').innerHTML
 let deleteOnlyBookStr = document.getElementById('deleteOnlyBookStr').innerHTML
 let deleteBookAndNotesStr = document.getElementById('deleteBookAndNotesStr').innerHTML
 let deleteStr = document.getElementById('deleteStr').innerHTML
+let titlePlaceholderStr = document.getElementById('titlePlaceholderStr').innerHTML
+let textPlaceholderStr = document.getElementById('textPlaceholderStr').innerHTML
 
 
 let searchFormShowed = false
@@ -63,7 +65,15 @@ Note = function(noteObj, sess) {
     this.book = noteObj['book']
     this.pseudo = noteObj['pseudo']
     this.title = noteObj['title']
+    if(!this.title || this.title == "" || !this.title.trim()) {
+        this.title = titlePlaceholderStr
+    }
+
     this.text = noteObj['text']
+    if(!this.text || this.text == "" || !this.text.trim()) {
+        this.text = textPlaceholderStr
+    }
+
     this.creationDate = noteObj['creationDate']
     this.lastUpdateDate = noteObj['lastUpdateDate']
     this.updateDateString = noteObj['updateDateString']
