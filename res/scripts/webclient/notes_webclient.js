@@ -32,7 +32,7 @@ exports.get = (req, res) => {
                         for(i in responseBooks["books"]) {
                             books_list += '<li class="book_button" book-id="' + responseBooks["books"][i]["bid"] + '">' + 
                                                 '<p>' + responseBooks["books"][i]["name"] + '</p>' +
-                                                '<svg class="book_edit" book-id="' + responseBooks["books"][i]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=9#menu_dots"></use></svg>'
+                                                '<svg class="book_edit" book-id="' + responseBooks["books"][i]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=10#menu_dots"></use></svg>'
                                             '</li>'
                         }
                         

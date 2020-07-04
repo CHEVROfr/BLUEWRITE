@@ -115,17 +115,17 @@ exports.get = (req, res, format) => {
                             }
 
                             if(req.params.format && req.params.format == "pdf") {
-                                ejsOptions["stylesheets"] = '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/general.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/markdown.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/note.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/katex.min.css?v=9">'
+                                ejsOptions["stylesheets"] = '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/general.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/markdown.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/note.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="' + req.protocol + "://" + req.headers.host + '/files/css/katex.min.css?v=10">'
                                 if(req.query.theme && req.query.theme == "dark") {
-                                    ejsOptions["stylesheets"] += '<link rel="stylesheet" media="print" href="' + req.protocol + "://" + req.headers.host + '/files/css/note-dark-print.css?v=9" />'
+                                    ejsOptions["stylesheets"] += '<link rel="stylesheet" media="print" href="' + req.protocol + "://" + req.headers.host + '/files/css/note-dark-print.css?v=10" />'
                                     // for no white space in bottom
                                     //ejsOptions["content"] += '<div style="height: 90vh; width: 100%; background: #0d0d0d; -webkit-print-color-adjust: exact;"></div>'
                                 }
                                 else {
-                                    ejsOptions["stylesheets"] += '<link rel="stylesheet" media="print" href="' + req.protocol + "://" + req.headers.host + '/files/css/note-light-print.css?v=9" />'
+                                    ejsOptions["stylesheets"] += '<link rel="stylesheet" media="print" href="' + req.protocol + "://" + req.headers.host + '/files/css/note-light-print.css?v=10" />'
                                 }
 
                                 ejsOptions["jsFiles"] = ""
@@ -185,16 +185,16 @@ exports.get = (req, res, format) => {
                                 })
                             }
                             else {
-                                ejsOptions["stylesheets"] = '<link rel="stylesheet" href="/files/css/codemirror.min.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="/files/css/general.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="/files/css/markdown.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="/files/css/note.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="/files/css/toastui-editor.custom.css?v=9" />' +
-                                                            '<link rel="stylesheet" href="/files/css/note-light-print.css?v=9" />' +
+                                ejsOptions["stylesheets"] = '<link rel="stylesheet" href="/files/css/codemirror.min.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="/files/css/general.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="/files/css/markdown.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="/files/css/note.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="/files/css/toastui-editor.custom.css?v=10" />' +
+                                                            '<link rel="stylesheet" href="/files/css/note-light-print.css?v=10" />' +
                                                             '<link rel="stylesheet" href="/files/css/katex.min.css">'
-                                ejsOptions["jsFiles"] = '<script src="/files/js/toastui-editor-all.custom.js?v=9"></script>' +
-                                                        '<script src="/files/js/fullscreen.js?v=9"></script>' +
-                                                        '<script src="/files/js/note_browserify.js?v=9"></script>'
+                                ejsOptions["jsFiles"] = '<script src="/files/js/toastui-editor-all.custom.js?v=10"></script>' +
+                                                        '<script src="/files/js/fullscreen.js?v=10"></script>' +
+                                                        '<script src="/files/js/note_browserify.js?v=10"></script>'
                                 ejsOptions["ciconsUrl"] = ciconsUrl
                                 res.render("note.ejs", ejsOptions)
                             }
