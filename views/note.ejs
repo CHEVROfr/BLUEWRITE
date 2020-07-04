@@ -87,28 +87,30 @@
                 <form method="post" action="" id="editForm">
         
                     <input id="titleInput" type="text" name="title" placeholder="<%- titleHolder %>" value="<%- title %>" spellcheck="false" autocomplete="off">
-                    <div id="titleText" class="noteText" contenteditable="true" placeholder="<%- titleHolder %>" spellcheck="false"></div>
+                    <div id="titleText" contenteditable="true" placeholder="<%- titleHolder %>" spellcheck="false"></div>
                     <div id="title_separator"></div>
         
                     <%- error %>
-                    <p id="booksInputLabel-top"><%- booksInputLabel %></p>
-                    <%- books %>
-                    <a href="#" id="buttonShowNewBook" class="buttonNewBook"><svg>
-                            <use xlink:href="<%- ciconsUrl %>#add"></use>
-                        </svg></a>
-                    <p id="booksInputLabel-right"><%- booksInputLabel %></p>
-                    <br />
-                    <a href="#" id="buttonHideNewBook" class="buttonNewBook"><svg>
-                            <use xlink:href="<%- ciconsUrl %>#cross"></use>
-                        </svg></a>
-                    <input id="newBookInput" type="text" name="newBookInput" spellcheck="false">
-                    <a href="#" id="newBookSubmit"><svg>
-                            <use xlink:href="<%- ciconsUrl %>#send"></use>
-                        </svg></a>
+                    <div id="book_edit_div">
+                        <p id="booksInputLabel-top"><%- booksInputLabel %></p>
+                        <%- books %>
+                        <a href="#" id="buttonShowNewBook" class="buttonNewBook"><svg>
+                                <use xlink:href="<%- ciconsUrl %>#add"></use>
+                            </svg></a>
+                        <p id="booksInputLabel-right"><%- booksInputLabel %></p>
+                        <br />
+                        <a href="#" id="buttonHideNewBook" class="buttonNewBook"><svg>
+                                <use xlink:href="<%- ciconsUrl %>#cross"></use>
+                            </svg></a>
+                        <input id="newBookInput" type="text" name="newBookInput" spellcheck="false">
+                        <a href="#" id="newBookSubmit"><svg><use xlink:href="<%- ciconsUrl %>#send"></use></svg></a>
+                    </div>
         
                     <textarea id="noteInput" class="textInput" name="text" placeholder="<%- textHolder %>" spellcheck="false"><%- text %></textarea>
 
                     <div id="noteEditor"></div>
+
+                    <p id="chars-words-number"><%- charsStr %> : <span id="chars-number">0</span> / <%- wordsStr %> : <span id="words-number">0</span></p>
         
                     <div id="editor-loading">
                         <svg><use xlink:href="<%- ciconsUrl %>#loading"></use></svg>

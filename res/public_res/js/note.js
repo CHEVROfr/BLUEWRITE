@@ -35,6 +35,11 @@ let modalExportShow = false
 let exportPdfSelectTheme = document.getElementById("exportPdfSelectTheme")
 let exportPdfButton = document.getElementById("exportPdfButton")
 
+let chars_number = document.getElementById("chars-number")
+let words_number = document.getElementById("words-number")
+let chars_words_number = document.getElementById("chars-words-number")
+
+
 /* ##################################################################
 #########################                ############################
 #########################   ERROR MODAL  ###########################
@@ -352,11 +357,12 @@ var editor
 
 createEditor = () => {
     document.getElementById("editor-loading").style.display = "none"
+    chars_words_number.style.display = "block"
 
     editor = new toastui.Editor({
         el: document.querySelector('#noteEditor'),
         previewStyle: 'tab',
-        height: '73vh',
+        height: '100vh',
         placeholder: noteInput.placeholder,
         initialValue: noteInput.value,
         toolbarItems: [
@@ -388,6 +394,7 @@ createEditor = () => {
     var observer = new MutationObserver((mutationsList, observer) => {
         for(let mutation of mutationsList) {
             noteInput.value = editor.getMarkdown()
+            setNewWordNumber()
             iconContentUnsaved()
         }
     })
@@ -420,6 +427,15 @@ createEditor = () => {
 
         document.getElementById("noteTitle").innerText = titleInput.value
     }
+
+    setNewWordNumber()
+}
+
+setNewWordNumber = () => {
+    var tmp_div = document.createElement("div")
+    tmp_div.innerHTML = editor.getHtml()
+    chars_number.innerText = tmp_div.innerText.length
+    words_number.innerText = tmp_div.innerText.split(" ").length
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////SAVE */

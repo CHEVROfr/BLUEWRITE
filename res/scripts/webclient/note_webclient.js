@@ -109,7 +109,9 @@ exports.get = (req, res, format) => {
                                 title: responseNote["note"]["title"],
                                 error: "",
                                 booksInputLabel: lang.get("choose_a_book", req.session.lang),
-                                books: htmlBooks
+                                books: htmlBooks,
+                                charsStr: lang.get("chars", req.session.lang),
+                                wordsStr: lang.get("words", req.session.lang)
                             }
 
                             if(req.params.format && req.params.format == "pdf") {

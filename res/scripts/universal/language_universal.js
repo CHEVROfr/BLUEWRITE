@@ -85,5 +85,9 @@ getFr = (id) => {
             return "carnets"
         case "results":
             return "RÉSULTATS"
+        case "chars":
+            return "carac"
+        case "words":
+            return "mots"
     }
 }

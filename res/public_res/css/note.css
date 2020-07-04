@@ -392,6 +392,13 @@ button {
 #####################################################################
 ###################################################################*/
 
+#editForm {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(100vh - 7rem);
+}
+
 #titleInput {
     display: none;
 }
@@ -403,8 +410,8 @@ button {
     border: none;
     font-size: 2em;
     color: #ffffff;
-    min-height: 1em;
     margin-bottom: .4em;
+    word-wrap: break-word;
 }
 
 #booksInputLabel-top {
@@ -577,6 +584,19 @@ button {
     fill: #fff;
 }
 
+#chars-words-number {
+    display: none;
+    text-align: end;
+    color: #aaa;
+    font-size: .9rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+#chars-words-number>span {
+    color: #fff;
+}
+
 @media all and (max-width: 620px) {
     #little_separator {
         width: 10em;
@@ -584,10 +604,17 @@ button {
 
     #booksInputLabel-top {
         display: block;
+        margin-top: 0;
     }
 
     #booksInputLabel-right {
         display: none;
+    }
+}
+
+@media all and (max-width: 600px) {
+    #editForm {
+        max-height: calc(100vh - 4rem);
     }
 }
 
