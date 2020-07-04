@@ -33,9 +33,9 @@
 }
 
 #addShareInput {
-    background: #0d0d0d;
+    background: #003f45;
     border: none;
-    padding: 3px;
+    padding: 3px 13px;
     border-radius: 5px;
     color: #ffffff;
     font-size: 1.2em;
@@ -56,7 +56,7 @@
 #addShareSubmit svg {
     width: 2em;
     height: 2em;
-    fill: #0d0d0d;
+    fill: #003f45;
     transition: fill .3s;
 }
 
@@ -74,6 +74,8 @@
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 1.2em;
+    font-weight: bold;
+    color: #003f45;
 }
 
 .shareListRemove {
@@ -138,6 +140,8 @@
 #modalDelete p {
     margin: 0;
     font-size: 1.3em;
+    color: #003f45;
+    font-weight: bold;
 }
 
 #modalDelete div {
@@ -145,19 +149,22 @@
 }
 
 #modalDelete div button {
-    background: #0d0d0d;
+    background: #003f45;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 5px;
     padding-right: 9px;
+    font-weight: bold;
     padding-left: 9px;
     font-size: 1.2em;
     height: auto;
+    transition: color .3s, background .3s;
 }
 
 #modalDelete div button:hover {
-    background: #0d0d0d;
+    background: #fff;
+    color: #003f45;
 }
 
 #modalExport {
@@ -262,6 +269,12 @@
     font-size: 1.2rem;
     padding: 3px 7px;
     border-radius: 5px;
+    transition: color .3s, background .3s;
+}
+
+.exportButton:hover {
+    background: #00b4c4;
+    color: #fff;
 }
 
 #note-toolsBar {
@@ -340,6 +353,12 @@ button {
 #########################                ############################
 #####################################################################
 ###################################################################*/
+
+#ownerString {
+    color: #00b4c4;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
 
 #noteTitle {
     margin-top: 10px;

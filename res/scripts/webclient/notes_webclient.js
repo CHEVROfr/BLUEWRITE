@@ -32,13 +32,13 @@ exports.get = (req, res) => {
                         for(i in responseBooks["books"]) {
                             books_list += '<li class="book_button" book-id="' + responseBooks["books"][i]["bid"] + '">' + 
                                                 '<p>' + responseBooks["books"][i]["name"] + '</p>' +
-                                                '<svg class="book_edit" book-id="' + responseBooks["books"][i]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=10#menu_dots"></use></svg>'
+                                                '<svg class="book_edit" book-id="' + responseBooks["books"][i]["bid"] + '"><use xlink:href="/files/cicons/cicons.svg?v=11#menu_dots"></use></svg>'
                                             '</li>'
                         }
                         
                         if(books_list == "") {
                             books_list = '<ul id="books_buttons_list">' +
-                                            '<li class="book_button" book-id="">' + lang.get("my_notes", req.session.lang).toUpperCase() + "</li>" + 
+                                            '<li class="book_button" book-id=""><p>' + lang.get("my_notes", req.session.lang).toUpperCase() + "</p></li>" + 
                                         "</ul>" + 
                                         '<p class="no_book">' + lang.get("no_book", req.session.lang) + '</p>'
                         }
