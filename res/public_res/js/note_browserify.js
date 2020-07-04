@@ -42881,7 +42881,6 @@ createEditor = () => {
         })
     }
 
-    console.log(editor)
     setNewMarkdown = () => {
         var converter = new showdown.Converter({
             tasklists: true,
