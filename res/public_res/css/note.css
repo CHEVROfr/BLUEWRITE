@@ -414,6 +414,11 @@ button {
     word-wrap: break-word;
 }
 
+#titleText:empty:not(:focus):before{
+    content:attr(placeholder);
+    color:grey;
+}
+
 #booksInputLabel-top {
     display: none;
     color: #aaaaaa;
