@@ -1,3 +1,212 @@
+#content {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    display: flex;
+    
+}
+
+/*//////////////////// BOOKS*/
+#books_panel {
+    margin-left: -15rem;
+    width: 15rem;
+    background: #00b4c4;
+    max-height: calc(100vh - 3rem);
+    min-height: calc(100vh - 3rem);
+    overflow: scroll;
+    position: fixed;
+    padding-top: 0.5rem;
+}
+
+#books_panel>svg {
+    width: 2rem;
+    height: 2rem;
+    fill: #fff;
+    transition: fill .3s;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+}
+
+#books_panel>svg:hover {
+    fill: #003f45;
+}
+
+#books_panel>.book_panel_title {
+    color: #003f45;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+#books_panel>ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#books_panel>ul>li {
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0;
+    border-top: 1px solid #003f45;
+    transition: background .5s;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#books_panel>ul>li>p {
+    margin: 0;
+    background: transparent !important;
+    padding: 15px 0 15px 15px;
+}
+
+#books_panel>ul>li>svg {
+    fill: #fff;
+    width: 1em;
+    height: 1em;
+    transition: fill .5s;
+    background: transparent !important;
+    padding: 15px;
+}
+
+#books_panel>ul>li>svg:hover {
+    fill: #00b4c4;
+}
+
+#books_panel>ul>li:last-child {
+    border-bottom: 1px solid #003f45;
+}
+
+#books_panel>ul>li:first-child {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#books_panel>ul>li:hover {
+    background: #003f45;
+}
+
+.no_book {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    margin-left: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.book_edit_menu {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background: rgba(13, 13, 13, 0.95);
+    border-radius: 5px;
+    padding: 0;
+    z-index: 1001;
+    margin-left: 3px;
+}
+
+.book_edit_menu>p {
+    margin: 0;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: background .5s;
+    border-bottom: 1px solid #fff;
+}
+
+.book_edit_menu>p:only-child {
+    border-radius: 5px;
+}
+.book_edit_menu>p:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: none;
+}
+.book_edit_menu>p:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.book_edit_menu>.sub_option {
+    color: #00b4c4;
+    font-size: 0.9rem;
+}
+
+.book_edit_menu>p:hover {
+    background: #666;
+}
+
+.book_edit_overlay {
+    position: fixed;
+    background: transparent !important;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.book_edit_tools_bar_overlay {
+    position: fixed;
+    background: transparent !important;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 3rem;
+    z-index: 1000;
+}
+
+
+#books_panel_hidden {
+    display: block;
+    width: 3rem;
+    background: #00b4c4;
+    text-align: center;
+    padding-top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    min-height: calc(100vh - 3rem);
+    position: fixed;
+}
+
+#books_panel_hidden>svg {
+    width: 2rem;
+    height: 2rem;
+    fill: #fff;
+    transition: fill .3s;
+}
+#books_panel_hidden>svg:hover {
+    fill: #003f45;
+}
+
+
+/*//////////////////// NOTES*/
+#notes {
+    margin-left: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    width: 100%;
+}
+
+@media all and (max-width: 600px) {
+    #notes {
+        margin-left: 3.5rem;
+        margin-top: 0;
+        margin-bottom: .5rem;
+        margin-right: .5rem;
+    }
+}
+
+
+
 #noNotes {
     font-size: 1.2em;
     color: #ffffff;
@@ -47,6 +256,7 @@
 .noteDate {
     color: #aaaaaa;
     margin-bottom: 0.3em;
+    margin-top: 1rem;
 }
 
 .noteTitle {
@@ -186,6 +396,8 @@
     top: 0;
     left: 0;
     width: 100%;
+    box-shadow: 0 2px 5px #0d0d0d;
+    z-index: 100;
 }
 
 #separator {

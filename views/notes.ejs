@@ -18,7 +18,7 @@
         <p id="appTitleBy">, by</p>
         <a href="https://chevro.fr" id="appTitleChevroLink"><h2 id="appTitleChevro">CHEVRO</h2></a>
         <div id="separator"></div>
-        <button id="searchButton"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#search"></use></svg></button>
+        <button id="searchButton" title="Ctrl + f"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#search"></use></svg></button>
         <a href="/settings" id="settings"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#settings"></use></svg></a>
 
         <button id="fullscreen">
@@ -27,25 +27,37 @@
         </button>
     </div>
 
-    <div id="searchForm">
-      <input type="text" id="searchInput" name="searchInput" placeholder="Tapez..." value="">
-      <button id="searchSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#search"></use></svg></button>
-    </div>
-
     <div id="content">
-      <%- content %>
+        <div id="books_panel">
+            <svg id="hide_books_panel"><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_left"></use></svg>
+            <p class="book_panel_title"><%- book_panel_title %></p>
+            <%- books_list %>
+        </div>
+        <div id="books_panel_hidden">
+            <svg id="show_books_panel"><use xlink:href="/files/cicons/cicons.svg?v=9#arrow_right"></use></svg>
+        </div>
+        <div id="notes">
+            <div id="searchForm">
+                <input type="text" id="searchInput" name="searchInput" placeholder="Tapez..." value="">
+                <button id="searchSubmit"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#search"></use></svg></button>
+            </div>
+            <div id="searchResults"></div>
+            <%- content %>
+        </div>
     </div>
-    <a href="/books" id="books" class="floatingButton" title=""><svg><use xlink:href="/files/cicons/cicons.svg?v=9#book"></use></svg></a>
-    <a href="/add/note" id="add" class="floatingButton" title="Ctrl + A"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#add"></use></svg></a>
+    <a href="/add/note" id="add" class="floatingButton" title="Ctrl + a"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#add"></use></svg></a>
 
     <p id="token" style="display: none;"><%- token %></p>
     <p id="uid" style="display: none;"><%- uid %></p>
     <p id="noOneStr" style="display: none;"><%- noOneStr %></p>
     <p id="apiHost" style="display: none;"><%- apiHost %></p>
+    <p id="resultsStr" style="display: none;"><%- resultsStr %></p>
+    <p id="deleteOnlyBookStr" style="display: none;"><%- deleteOnlyBookStr %></p>
+    <p id="deleteBookAndNotesStr" style="display: none;"><%- deleteBookAndNotesStr %></p>
+    <p id="deleteStr" style="display: none;"><%- deleteStr %></p>
 
     <script src="/files/js/andmrkow.js?v=9"></script>
     <script src="/files/js/notes.js?v=9"></script>
-    <script src="/files/js/searchNotes.js?v=9"></script>
     <script src="/files/js/fullscreen.js?v=9"></script>
   </body>
 </html>

@@ -17,7 +17,7 @@ exports.note = function(noteObj, sess) {
     this.shareWith = noteObj['shareWith']
 
     this.getHtmlListDiv = function(withBook) {
-        html = '<div class="noteBox">' +
+        html = '<div class="noteBox" book-id="' + this.book.bid + '">' +
         '<a class="noteInfos" href="/note/' + this.nid + '">' +
         '<p class="noteDate">' + this.updateDateString + '</p>'
 
@@ -33,7 +33,7 @@ exports.note = function(noteObj, sess) {
                 bookName = lang.get("no_one", sess.lang)
             }
 
-            html += '<a href="/books?bid=' + this.book.bid + '#b_' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#book"></use></svg>' + tools_webclient.htmlspecialchars(bookName) + '</a>'
+            html += '<a href="/notes?book=' + this.book.bid + '" class="noteBook"><svg><use xlink:href="/files/cicons/cicons.svg?v=9#book"></use></svg>' + tools_webclient.htmlspecialchars(bookName) + '</a>'
         }
         
         html += '<a href="/note/' + this.nid + '" class="noteText">' + tools_webclient.htmlspecialchars(tools_webclient.removeHtmlTags(markdown_webclient.converter.makeHtml(this.text))) + '</a>'
@@ -118,7 +118,7 @@ exports.books = function(booksObj, sess) {
         }
         else {
             for(j in this.notes) {
-                noBookNotes.push(this.notes[forRNotes])
+                noBookNotes.push(this.notes[j])
             }
         }
         //NOTES WITHOUT BOOK

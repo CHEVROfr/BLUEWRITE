@@ -101,12 +101,6 @@ body {
     }
 }
 
-@media all and (max-width: 1030px) {
-    body {
-        --content-margin: 2em;
-    }
-}
-
 /*TOP BAR*/
 #topBar {
     display: flex;

@@ -13,12 +13,14 @@ getFr = (id) => {
             return "Veuillez vous connecter avec votre compte CHEVRO."
         case "no_note":
             return "Vous n'avez aucune note..."
+        case "no_book":
+            return "Vous n'avez aucun carnet..."
         case "api_inaccessible":
             return "L'api est inaccessible..."
         case "note_does_not_exist_or_not_authorized":
             return "Cette note n'existe pas ou vous n'êtes pas autorisé à y accéder."
         case "book_does_not_exist_or_not_authorized":
-            return "Ce book n'existe pas ou vous n'êtes pas autorisé à y accéder."
+            return "Ce carnet n'existe pas ou vous n'êtes pas autorisé à y accéder."
         case "nameless":
             return "Sans nom"
         case "start_writing_something_incredible":
@@ -39,22 +41,24 @@ getFr = (id) => {
             return "Connexion"
         case "my_notes":
             return "Mes notes"
+        case "other":
+            return "Autres"
         case "characters":
             return "caractères"
         case "choose_a_book":
-            return "Choisir un livre de notes"
+            return "Choisir un carnet de notes"
         case "no_one":
             return "Aucun"
         case "my_books":
-            return "Mes livres"
+            return "Mes carnets"
         case "no_notes_for_this_book":
-            return "Aucune notes pour ce livre"
-        case "delete_book_or_notes_and_book":
-            return "Voulez-vous juste supprimer ce livre ou supprimer aussi toutes les notes qu’il comporte ?"
+            return "Aucune notes pour ce carnet"
+        case "delete":
+            return "Supprimer"
         case "delete_only_book":
-            return "Ce livre"
+            return "Seulement ce carnet"
         case "delete_book_and_notes":
-            return "Ce livre et ses notes"
+            return "Ce carnet et ses notes"
         case "please_wait_while_saving_your_note":
             return "Veuillez patienter pendant la sauvegarde de votre note"
         case "cant_autosave_note":
@@ -77,5 +81,9 @@ getFr = (id) => {
             return "À propos"
         case "about_text":
             return "BLUEWRITE est un logiciel OpenSource, fourni sous la licence GPLv3. Vous pouvez (et nous vous l'y encourageons) auto-héberger BLUEWRITE. Vous trouverez les informations sur notre repos !"
+        case "books":
+            return "carnets"
+        case "results":
+            return "RÉSULTATS"
     }
 }

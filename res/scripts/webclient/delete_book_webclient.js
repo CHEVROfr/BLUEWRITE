@@ -16,7 +16,7 @@ exports.get = (req, res) => {
 
             delete_book_universal.deleteBook(responseCheck["uid"], req.params.bid, delNotes).then((responseDelete) => {
                 if(responseDelete["status"] == "sucess") {
-                    res.redirect("/books")
+                    res.redirect("/notes")
                 }
                 else {
                     if(responseDelete["code"] == "0005") {

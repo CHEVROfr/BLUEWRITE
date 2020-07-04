@@ -12,39 +12,10 @@ configs.load()
 
 //////SCRIPTS//////
 var tools_webclient = require("./res/scripts/webclient/tools_webclient")
-/* var tools = require('./res/scripts/universal/tools_universal')
-var notes = require('./res/scripts/api/notes_api')
-var login = require('./res/scripts/api/login')
-var register = require('./res/scripts/api/register')
-var addnote = require('./res/scripts/api/addnote')
-var getnote = require('./res/scripts/api/getnote')
-var books = require('./res/scripts/api/books')
-var addbook = require('./res/scripts/api/addbook')
-var updatenote = require('./res/scripts/api/updatenote')
-var deletenote = require('./res/scripts/api/deletenote')
-var deletebook = require('./res/scripts/api/deletebook')
-var sharenote = require('./res/scripts/api/sharenote')
-var desharenote = require('./res/scripts/api/desharenote')
-var search = require('./res/scripts/api/search') */
-
-/* var configs = require("./res/configs/configs")
-var db = require('./res/configs/db') */
-
-//API HOST
-/* var apiHost = configs.get("nameServerApiHost")
-var apikey = configs.get("nameServerApiKey") */
 
 //OBJET APP
 var app = express()
 
-//CONNECTION A MONGODB
-/* var Notes
-var Books
-setTimeout(() => {
-  Notes = db.Notes
-  Books = db.Books
-}, 3000)
- */
 ////////////////////////////////////////////////////////////////////////////////////APP//////////////////////////////////////////////////////////////////////
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(compression())
@@ -77,38 +48,17 @@ app.post("/api/deshare", (req, res) => require("./res/scripts/api/share_api").po
 app.post("/api/add/book", (req, res) => require("./res/scripts/api/add_book_api").post(req, res))
 app.post("/api/delete/book", (req, res) => require("./res/scripts/api/delete_book_api").post(req, res))
 
-// WEB CLIENT
-/* app.use((req, res, next) => {
-    if(!req.session.connected) {
-        req.session.connected = "false"
-    }
-    if(!req.session.uid) {
-        req.session.uid = ""
-    }
-    if(!req.session.pseudo) {
-        req.session.pseudo = ""
-    }
-    if(!req.session.auth_token) {
-        req.session.auth_token = ""
-    }
-    if(!req.session.lang) {
-        req.session.lang = "fr"
-    }
-    next()
-}) */
 
+
+// WEB CLIENT
 app.get("/", (req, res) => require("./res/scripts/webclient/index_webclient").get(req, res))
 
 app.get("/login", (req, res) => require("./res/scripts/webclient/login_webclient").get(req, res))
-//app.get("/login/check", (req, res) => require("./res/scripts/webclient/login_webclient").checkLogin(req, res))
 
 app.get("/notes", (req, res) => require("./res/scripts/webclient/notes_webclient").get(req, res))
-app.get("/books", (req, res) => require("./res/scripts/webclient/books_webclient").get(req, res))
 
 app.get("/note/:nid", (req, res) => require("./res/scripts/webclient/note_webclient").get(req, res))
 app.get("/note/:nid/:format", (req, res) => require("./res/scripts/webclient/note_webclient").get(req, res))
-
-/* app.post("/edit/note/:nid", (req, res) => require("./res/scripts/webclient/edit_webclient").post(req, res)) */
 
 app.get("/add/note", (req, res) => require("./res/scripts/webclient/add_note_webclient").get(req, res))
 app.post("/add/note", (req, res) => require("./res/scripts/webclient/add_note_webclient").post(req, res))
