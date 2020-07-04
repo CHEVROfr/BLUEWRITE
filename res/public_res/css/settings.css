@@ -93,6 +93,7 @@
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 0;
 }
 
 #toolsBar #fullscreen_exit {
