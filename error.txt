@@ -5,3 +5,4 @@
 0004 : the user you want to share your note with does not exist
 0005 : a book with this name already exists
 0006 : the note was not added / edited because its title and text are empty
+0007 : not your note !

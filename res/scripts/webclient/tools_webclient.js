@@ -63,6 +63,17 @@ exports.sendErrors = (errorNum, req, res, redirect="") => {
             res.status(301)
             res.redirect(redirect)
             break;
+        case "403":
+            res.setHeader("Content-Type", mime_ext.get("html"))
+            res.status(403)
+            res.render('error.ejs', { 
+                appTitleRedirect: this.getAppTitleRedirect(req.session),
+                redirect: this.getAppTitleRedirect(req.session),
+                redirectText: "RETOUR À L'ACCUEIL",
+                errorText: "Forbidden",
+                errorCode: "403"
+            })
+            break;
         default:
             res.setHeader("Content-Type", mime_ext.get("html"))
             res.status(404)

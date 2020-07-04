@@ -9,14 +9,19 @@ var markdown_webclient = require("../webclient/markdown_webclient")
 exports.get = (req, res) => {
     return new Promise((resolveP, rejectP) => {
         tools_universal.checkUserToken(req.session.auth_token).then((responseCheck) => {
-            delete_note_universal.deleteNote(req.params.nid).then((responseDelete) => {
+            delete_note_universal.deleteNote(req.params.nid, responseCheck["uid"]).then((responseDelete) => {
                 if(responseDelete["status"] == "sucess") {
                     res.redirect("/notes")
                 }
                 else {
-                    // Unknown Error
-                    console.error(responseCheck["err"])
-                    tools_webclient.sendErrors("0000", req, res)
+                    if(responseDelete["code"] == "0007") {
+                        tools_webclient.sendErrors("403", req, res)
+                    }
+                    else {
+                        // Unknown Error
+                        console.error(responseCheck["err"])
+                        tools_webclient.sendErrors("0000", req, res)
+                    }
                 }
             }).catch((err) => {
                 // Unknown Error

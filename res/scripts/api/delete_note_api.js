@@ -24,7 +24,7 @@ exports.post = (req, res) => {
         let jsonRes = {}
 
         tools_universal.checkUserToken(req.body.token).then((responseCheck) => {
-            delete_note_universal.deleteNote(req.body.nid).then((responseDelete) => {
+            delete_note_universal.deleteNote(req.body.nid, responseCheck["uid"]).then((responseDelete) => {
                 if(responseDelete["status"] == "sucess") {
                     // Sucess
                     jsonRes = {
