@@ -80,7 +80,7 @@ getFr = (id) => {
         case "about":
             return "À propos"
         case "about_text":
-            return "BLUEWRITE est un logiciel OpenSource, fourni sous la licence GPLv3. Vous pouvez (et nous vous l'y encourageons) auto-héberger BLUEWRITE. Vous trouverez les informations sur notre repos !"
+            return "BLUEWRITE est un logiciel OpenSource, fourni sous la licence GPLv3. Vous pouvez (et nous vous y encourageons) auto-héberger BLUEWRITE. Vous trouverez les informations sur notre repos !"
         case "books":
             return "carnets"
         case "results":
